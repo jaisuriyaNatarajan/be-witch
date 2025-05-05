@@ -3,6 +3,7 @@ import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
 import styled, { useTheme } from "styled-components";
 import { Field, Form } from "react-final-form";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = styled.footer`
   font-size: 0.8rem;
@@ -97,11 +98,21 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
 `;
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.colors.black};
+  text-decoration: none;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
 
 const Loginpage = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const onSubmit = (values) => {
     console.log("Form Submitted", values);
+    navigate("/signup/otp-verification");
   };
 
   return (
@@ -152,7 +163,9 @@ const Loginpage = () => {
                     <br />
                     <div style={{ textAlign: "center" }}>
                       <span>
-                        Don’t have an account? <strong>Sign up</strong>
+                        <StyledLink to="/register">
+                          Don’t have an account? <strong>Sign up</strong>
+                        </StyledLink>
                       </span>
                     </div>
                   </form>

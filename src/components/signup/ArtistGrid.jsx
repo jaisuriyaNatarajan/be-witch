@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import artistList from "./artistList";
 
@@ -16,7 +16,11 @@ const Card = styled.div`
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  transform: ${(props) => (props.isFocused ? "translateY(-5px)" : "none")};
+  box-shadow: ${(props) =>
+    props.isFocused ? "0 4px 12px rgba(0, 0, 0, 0.2)" : "0 2px 8px rgba(0, 0, 0, 0.1)"};
+  border: ${(props) => (props.isFocused ? "1px solid #E84C6A" : "2px solid transparent")};
 
   &:hover {
     transform: translateY(-5px);
@@ -37,10 +41,21 @@ const CardLabel = styled.div`
 `;
 
 const ArtistGrid = () => {
+  const [focusedCard, setFocusedCard] = useState(null);
+
+  const handleCardClick = (artistName, index) => {
+    console.log(`Artist clicked: ${artistName}`);
+    setFocusedCard(index);
+  };
+
   return (
     <GridWrapper>
       {artistList.map((artist, index) => (
-        <Card key={index}>
+        <Card
+          key={index}
+          isFocused={focusedCard === index}
+          onClick={() => handleCardClick(artist.role, index)}
+        >
           <CardImage src={artist.image} alt={artist.role} />
           <CardLabel>{artist.role}</CardLabel>
         </Card>

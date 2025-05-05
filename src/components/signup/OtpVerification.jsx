@@ -4,7 +4,7 @@ import styled, { useTheme } from "styled-components";
 import Button from "../../components/Button/Button";
 import Paragraph from "../../components/Paragraph/Paragraph";
 import Icon from "../../utils/Icon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
 
@@ -53,7 +53,7 @@ const ResendText = styled.p`
   text-align: center;
 
   &:hover {
-    color: #ff8c00;
+    color:#e84c6a;
     text-decoration: underline;
   }
   .resend-otp {
@@ -93,6 +93,8 @@ const Footer = styled.footer`
 
 const OtpVerification = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  
   const [otp, setOtp] = useState("");
 
   const StyledLink = styled(Link)`
@@ -164,6 +166,7 @@ const OtpVerification = () => {
             bg={theme.colors.white}
             color={theme.colors.black}
             border="1px solid #A3A3A3"
+            onClick={() => navigate(-1)}
           >
             Cancel
           </Button>

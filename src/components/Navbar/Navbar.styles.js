@@ -67,6 +67,10 @@ const Logo = styled.img`
   width: 153px;
   height: 52px;
   object-fit: contain;
+  position: fixed;
+  top: 12px;
+  left: 32px;
+  z-index: 1000;
 `;
 
 export {

@@ -50,10 +50,10 @@ const StyledImage = styled.img`
 
 const OverlayContent = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 95%;
+  width: 90%;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border-radius: 16px;

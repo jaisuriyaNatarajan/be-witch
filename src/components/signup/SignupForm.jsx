@@ -3,12 +3,13 @@ import { Form, Field } from "react-final-form";
 import styled from "styled-components";
 import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 const FormContainer = styled.div`
@@ -17,49 +18,58 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
-const Heading = styled.h2`
-  font-size: 1.5rem;
+const Heading = styled.h3`
+  font-family: Inter;
   font-weight: 600;
-  margin: 1rem 0 0.5rem;
+  font-size: 22px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
 `;
 
 const Subheading = styled.p`
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0%;
+  text-align: center;
+  margin: 0px 0px 24px 0px;
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 const Label = styled.label`
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0%;
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: calc(100% - 1.5rem);
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+  box-sizing: border-box;
 `;
 
 const Select = styled.select`
-  width: 107%;
+  width: calc(100% - 1.5rem);
   padding: 0.75rem;
-  margin-bottom: 0.25rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+  box-sizing: border-box;
 `;
 
 const Row = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1rem;
-
+  .first-name {
+    margin: 0;
+  }
   & > div {
     flex: 1;
   }
@@ -68,7 +78,6 @@ const Row = styled.div`
 const HelperText = styled.p`
   font-size: 0.75rem;
   color: #777;
-  margin-bottom: 1rem;
 `;
 
 const Agreement = styled.p`
@@ -85,7 +94,7 @@ const Agreement = styled.p`
 `;
 
 const SubmitButton = styled.button`
-  width: 100%;
+  width: calc(100% - 1.5rem);
   padding: 0.9rem;
   background-color: #000;
   color: white;
@@ -110,25 +119,17 @@ const Footer = styled.footer`
   left: 0;
 `;
 
-const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.colors.black};
-  text-decoration: none;
-
-  &:hover {
-    color: ${(props) => props.theme.colors.primary};
-  }
-`;
-
 export const SignupForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
     console.log("Form Submitted", values);
-    navigate("/signup/otp-verification");
+    navigate("/onboarding");
   };
 
   return (
     <>
+      <Logo src={BeWitch} alt="BeWitch Logo" />
       <Wrapper>
         <FormContainer>
           <Heading>Finish signing Up</Heading>
@@ -146,6 +147,7 @@ export const SignupForm = () => {
                       <Input
                         {...input}
                         placeholder="First name on ID"
+                        className="first-name"
                         required
                       />
                     )}
@@ -160,7 +162,6 @@ export const SignupForm = () => {
                     )}
                   </Field>
                 </Row>
-
                 <Label>Date of Birth*</Label>
                 <Field name="dob" component="input" type="date">
                   {({ input }) => <Input {...input} required />}
@@ -180,7 +181,6 @@ export const SignupForm = () => {
                 <HelperText>
                   Help us connect you with opportunities in your area
                 </HelperText>
-
                 <Label>Email*</Label>
                 <Field name="email" component="input" type="email">
                   {({ input }) => (
@@ -195,7 +195,6 @@ export const SignupForm = () => {
                   <a href="#">Nondiscrimination Policy</a> and acknowledge the
                   <a href="#">Privacy Policy</a>.
                 </Agreement>
-
                 <SubmitButton type="submit">Agree and Continue</SubmitButton>
               </form>
             )}

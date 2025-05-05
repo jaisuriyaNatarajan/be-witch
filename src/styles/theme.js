@@ -3,6 +3,7 @@ export const theme = {
     primary: "#E84C6A", //pink
     secondary: "#A3A3A3", // grey
     liteGrey: "#DDDDDD",
+    darkGrey: "#535862",
     background: "#f0f2f5",
     text: "#333",
     white: "#ffffff",

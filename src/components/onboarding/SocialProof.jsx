@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const Container = styled.div`
   max-width: 600px;
@@ -48,6 +49,8 @@ const Input = styled.input`
 `;
 
 const SocialProof = () => {
+  const { updateFormData } = useOnboarding();
+
   const [links, setLinks] = useState({
     instagram: "",
     xlink: "",
@@ -59,6 +62,10 @@ const SocialProof = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    updateFormData({ socialProof: links });
+  }, [links]);
 
   return (
     <Container>

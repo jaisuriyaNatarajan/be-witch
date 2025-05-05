@@ -31,7 +31,6 @@ const ProfileSetupLayout = ({ children }) => {
   const steps = ["/", "/upload-photo", "/social-proof", "/about-you"];
   const completePercentage =
     steps.findIndex((step) => `/onboarding${step}` === location.pathname) + 1;
-  console.log(completePercentage);
 
   return (
     <Wrapper>

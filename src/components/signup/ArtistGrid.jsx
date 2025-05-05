@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import artistList from "./artistList";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const GridWrapper = styled.div`
   display: flex;
@@ -19,8 +20,11 @@ const Card = styled.div`
   transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
   transform: ${(props) => (props.isFocused ? "translateY(-5px)" : "none")};
   box-shadow: ${(props) =>
-    props.isFocused ? "0 4px 12px rgba(0, 0, 0, 0.2)" : "0 2px 8px rgba(0, 0, 0, 0.1)"};
-  border: ${(props) => (props.isFocused ? "1px solid #E84C6A" : "2px solid transparent")};
+    props.isFocused
+      ? "0 4px 12px rgba(0, 0, 0, 0.2)"
+      : "0 2px 8px rgba(0, 0, 0, 0.1)"};
+  border: ${(props) =>
+    props.isFocused ? "1px solid #E84C6A" : "2px solid transparent"};
 
   &:hover {
     transform: translateY(-5px);
@@ -42,10 +46,11 @@ const CardLabel = styled.div`
 
 const ArtistGrid = () => {
   const [focusedCard, setFocusedCard] = useState(null);
+  const { updateFormData } = useOnboarding();
 
   const handleCardClick = (artistName, index) => {
-    console.log(`Artist clicked: ${artistName}`);
     setFocusedCard(index);
+    updateFormData({ artist: artistName });
   };
 
   return (

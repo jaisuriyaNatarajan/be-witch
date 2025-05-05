@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const Container = styled.div`
   max-width: 700px;
@@ -42,9 +43,15 @@ const StyledTextarea = styled.textarea`
 `;
 
 const AboutYou = () => {
+  const { updateFormData,formData } = useOnboarding();
   const [bio, setBio] = useState(
     `“I'm a certified makeup artist with 5+ years of experience in bridal, editorial, and glam makeovers. Passionate about enhancing natural beauty and collaborating with creatives.”`
   );
+
+  useEffect(() => {
+    updateFormData({ about: bio });
+    console.log("Bio updated successfully!", JSON.stringify(formData, null, 2));
+  }, [bio]);
 
   return (
     <Container>

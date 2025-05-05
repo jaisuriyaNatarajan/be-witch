@@ -4,6 +4,8 @@ import BeWitch from "../../assets/Bewittch.png";
 import styled, { useTheme } from "styled-components";
 import { Field, Form } from "react-final-form";
 import { Link, useNavigate } from "react-router-dom";
+import googleLogo from "../../assets/icons/GoogleIcon.png";
+import Paragraph from "../Paragraph/Paragraph";
 
 const Footer = styled.footer`
   font-size: 0.8rem;
@@ -50,7 +52,7 @@ const FormContainer = styled.div`
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 `;
 const Label = styled.label`
   font-size: 0.85rem;
@@ -60,31 +62,35 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 360px;
+  width: 336px;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 30px;
 `;
 const Row = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
-const Heading = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 1rem 0 0.5rem;
-  text-align: center;
+const Heading = styled.h1`
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: 0%;
 `;
 
 const Subheading = styled.p`
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 2rem;
-  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0%;
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 const SubmitButton = styled.button`
@@ -99,9 +105,14 @@ const SubmitButton = styled.button`
   cursor: pointer;
 `;
 const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.darkGrey};
   text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
 
+  strong {
+    color: ${(props) => props.theme.colors.black};
+  }
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
@@ -111,72 +122,121 @@ const Loginpage = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const onSubmit = (values) => {
-    console.log("Form Submitted", values);
     navigate("/signup/otp-verification");
   };
 
+  const PhoneNumberInput = ({ input }) => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        overflow: "hidden",
+        backgroundColor: "#fff",
+        height: "50px",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "#F6F6F6",
+          padding: "0 12px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRight: "1px solid #ccc",
+          height: "100%",
+          fontSize: "14px",
+        }}
+      >
+        <span style={{ marginLeft: "6px" }}>IN</span>
+      </div>
+      <input
+        {...input}
+        placeholder="Enter your phone number"
+        required
+        style={{
+          border: "none",
+          outline: "none",
+          flex: 1,
+          height: "100%",
+          padding: "0 12px",
+          fontSize: "14px",
+        }}
+      />
+    </div>
+  );
+
+  const GoogleSignInButton = ({ theme }) => (
+    <SubmitButton
+      bg={theme.colors.white}
+      color={theme.colors.black}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <img
+        src={googleLogo}
+        height="24px"
+        width="24px"
+        alt="Google Logo"
+        style={{ marginRight: "8px" }}
+      />
+      Sign in with Google
+    </SubmitButton>
+  );
+
+  const SignUpLink = () => (
+    <div style={{ textAlign: "center", marginTop: "1rem" }}>
+      <span>
+        <StyledLink to="/register">
+          Don’t have an account? <strong>Sign up</strong>
+        </StyledLink>
+      </span>
+    </div>
+  );
+
   return (
-    <>
-      <PageWrapper>
-        <Header>
-          <Logo src={BeWitch} alt="BeWitch Logo" />
-        </Header>
-        <Main>
-          <Wrapper>
-            <FormContainer>
-              <Heading>Let’s Get You Known</Heading>
-              <Subheading>
-                Join the world of beauty, fashion, connections.
-              </Subheading>
-              <Form
-                onSubmit={onSubmit}
-                render={({ handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <Row>
-                      <Label>Email*</Label>
-                      <Field name="email" component="input" type="email">
-                        {({ input }) => (
-                          <Input
-                            {...input}
-                            placeholder="you@example.com"
-                            required
-                          />
-                        )}
-                      </Field>
-                      <Label>Password</Label>
-                      <Field name="password" component="input" type="password">
-                        {({ input }) => (
-                          <Input {...input} placeholder="********" required />
-                        )}
-                      </Field>
-                    </Row>
-                    <Row>
-                      <SubmitButton type="submit">Sign in</SubmitButton>
-                      <SubmitButton
-                        bg={theme.colors.white}
-                        color={theme.colors.black}
-                      >
-                        {/* TODO Google Logo Image have to set */}
-                        <span>Logo</span> &nbsp; Sign in with Google
-                      </SubmitButton>
-                    </Row>
-                    <br />
-                    <div style={{ textAlign: "center" }}>
-                      <span>
-                        <StyledLink to="/register">
-                          Don’t have an account? <strong>Sign up</strong>
-                        </StyledLink>
-                      </span>
-                    </div>
-                  </form>
-                )}
-              />
-            </FormContainer>
-          </Wrapper>
-        </Main>
-        <Footer>© bewittch 2025</Footer>
-      </PageWrapper>
-    </>
+    <PageWrapper>
+      <Header>
+        <Logo src={BeWitch} alt="BeWitch Logo" />
+      </Header>
+      <Main>
+        <Wrapper>
+          <FormContainer>
+            <Heading>Let’s Get You Known</Heading>
+            <Subheading>
+              Set up your profile to get discovered by clients and
+              collaborators.
+            </Subheading>
+            <Form
+              onSubmit={onSubmit}
+              render={({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                  <Row>
+                    <Label>Phone Number*</Label>
+                    <Field name="phoneNumber" component="input" type="text">
+                      {({ input }) => <PhoneNumberInput input={input} />}
+                    </Field>
+                    <Paragraph color={theme.colors.darkGrey} fontSize="14px">
+                      we will send you a text with a verification code .
+                    </Paragraph>
+                  </Row>
+                  <Row>
+                    <SubmitButton type="submit">Sign in</SubmitButton>
+                    <GoogleSignInButton theme={theme} />
+                  </Row>
+                  <SignUpLink />
+                </form>
+              )}
+            />
+          </FormContainer>
+        </Wrapper>
+      </Main>
+      <Footer>© bewittch 2025</Footer>
+    </PageWrapper>
   );
 };
 

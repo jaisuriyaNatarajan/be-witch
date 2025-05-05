@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
 import { useNavigate } from "react-router-dom";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const Wrapper = styled.div`
   display: flex;
@@ -121,9 +122,16 @@ const Footer = styled.footer`
 
 export const SignupForm = () => {
   const navigate = useNavigate();
+  const { updateSignupData } = useOnboarding();
 
   const onSubmit = (values) => {
-    console.log("Form Submitted", values);
+    updateSignupData({
+      legalName: `${values.firstName} ${values.lastName}`,
+      dob: values.dob,
+      location: values.location,
+      email: values.email,
+    });
+
     navigate("/onboarding");
   };
 
@@ -162,6 +170,7 @@ export const SignupForm = () => {
                     )}
                   </Field>
                 </Row>
+
                 <Label>Date of Birth*</Label>
                 <Field name="dob" component="input" type="date">
                   {({ input }) => <Input {...input} required />}
@@ -181,6 +190,7 @@ export const SignupForm = () => {
                 <HelperText>
                   Help us connect you with opportunities in your area
                 </HelperText>
+
                 <Label>Email*</Label>
                 <Field name="email" component="input" type="email">
                   {({ input }) => (

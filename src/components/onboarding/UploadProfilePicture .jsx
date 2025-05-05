@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MakeupArtists } from "../../assets/artists";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -42,7 +43,7 @@ const UploadButton = styled.label`
   font-size: 1rem;
   background-color: #000;
   color: #fff;
-  border: 2px solid #FF8C00;
+  border: 2px solid #ff8c00;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s ease;
@@ -58,6 +59,7 @@ const HiddenInput = styled.input`
 
 const UploadProfilePicture = () => {
   const [image, setImage] = useState(MakeupArtists);
+  const { updateFormData } = useOnboarding();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -65,6 +67,10 @@ const UploadProfilePicture = () => {
       setImage(URL.createObjectURL(file));
     }
   };
+
+  useEffect(() => {
+    updateFormData({ profilePicture: image });
+  }, [image]);
 
   return (
     <Wrapper>

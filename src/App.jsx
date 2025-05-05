@@ -4,14 +4,17 @@ import { BrowserRouter } from "react-router-dom";
 import { theme } from "./styles/theme";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import AppRoutes from "./routes/AppRoutes ";
+import { OnboardingProvider } from "./context/OnboardingContext";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <OnboardingProvider>
+        <GlobalStyles />
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </OnboardingProvider>
     </ThemeProvider>
   );
 }

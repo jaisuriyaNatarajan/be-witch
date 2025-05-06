@@ -177,6 +177,7 @@ const OtpVerification = () => {
             color={theme.colors.white}
             hoverColor={theme.colors.white}
             border
+            onClick={() => navigate("/dashboard")}
           >
             Verify
           </Button>

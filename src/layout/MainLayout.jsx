@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar/NavBar";
 import { Outlet, useLocation } from "react-router-dom";
+import Footer from "../components/Footer/Footer";
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -12,13 +13,7 @@ const LayoutContainer = styled.div`
 const Content = styled.main`
   flex: 1;
   padding: 2rem;
-`;
-
-const Footer = styled.footer`
-  background: ${({ theme }) => theme.colors.primary};
-  color: white;
-  text-align: center;
-  padding: 1rem;
+  margin: 0 auto;
 `;
 
 const MainLayout = () => {
@@ -30,7 +25,7 @@ const MainLayout = () => {
       <Content>
         <Outlet />
       </Content>
-      <Footer>&copy; 2025 MyApp</Footer>
+      <Footer />
     </LayoutContainer>
   );
 };

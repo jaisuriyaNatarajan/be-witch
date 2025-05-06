@@ -19,7 +19,8 @@ import AboutYou from "../components/onboarding/AboutYou";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/login" index element={<LoginLayout />} />
+      <Route index element={<LoginLayout />} />
+      <Route path="/login" element={<LoginLayout />} />
       <Route path="/register" element={<SignupPage />} />
       <Route path="/signup/otp-verification" element={<SignupPage />} />
       <Route path="/onboarding" element={<Onboarding />} />
@@ -48,7 +49,7 @@ const AppRoutes = () => {
         }
       />
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Home />} />
         <Route path="/Bookings" element={<Bookings />} />
         <Route path="/Discover" element={<Discover />} />
         <Route path="/Services" element={<Services />} />

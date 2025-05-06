@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
 import styled, { useTheme } from "styled-components";
@@ -6,6 +6,7 @@ import { Field, Form } from "react-final-form";
 import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../assets/icons/GoogleIcon.png";
 import Paragraph from "../Paragraph/Paragraph";
+import { media } from "../../utils/media";
 
 const Footer = styled.footer`
   font-size: 0.8rem;
@@ -23,8 +24,9 @@ const PageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden; /* Prevent vertical scrollbar */
+  overflow: hidden;
 `;
+
 const Header = styled.header`
   display: flex;
   justify-content: center;
@@ -34,6 +36,7 @@ const Header = styled.header`
   left: 50px;
   top: 50px;
 `;
+
 const Main = styled.div`
   display: flex;
   justify-content: center;
@@ -45,15 +48,22 @@ const Main = styled.div`
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
+
+  ${media.tablet`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
+
 const FormContainer = styled.div`
-  width: 100%;
+  flex: 1;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  padding: 2rem;
 `;
+
 const Label = styled.label`
   font-size: 0.85rem;
   font-weight: 500;
@@ -61,14 +71,6 @@ const Label = styled.label`
   display: block;
 `;
 
-const Input = styled.input`
-  width: 336px;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  height: 30px;
-`;
 const Row = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,14 +84,12 @@ const Heading = styled.h1`
   font-weight: 700;
   font-size: 36px;
   line-height: 44px;
-  letter-spacing: 0%;
 `;
 
 const Subheading = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  letter-spacing: 0%;
   color: ${(props) => props.theme.colors.secondary};
 `;
 
@@ -104,11 +104,11 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
 `;
+
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.colors.darkGrey};
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
 
   strong {
     color: ${(props) => props.theme.colors.black};
@@ -121,7 +121,8 @@ const StyledLink = styled(Link)`
 const Loginpage = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const onSubmit = (values) => {
+
+  const onSubmit = () => {
     navigate("/signup/otp-verification");
   };
 
@@ -141,15 +142,14 @@ const Loginpage = () => {
         style={{
           backgroundColor: "#F6F6F6",
           padding: "0 12px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           borderRight: "1px solid #ccc",
           height: "100%",
+          display: "flex",
+          alignItems: "center",
           fontSize: "14px",
         }}
       >
-        <span style={{ marginLeft: "6px" }}>IN</span>
+        <span>IN</span>
       </div>
       <input
         {...input}
@@ -159,7 +159,6 @@ const Loginpage = () => {
           border: "none",
           outline: "none",
           flex: 1,
-          height: "100%",
           padding: "0 12px",
           fontSize: "14px",
         }}
@@ -167,7 +166,7 @@ const Loginpage = () => {
     </div>
   );
 
-  const GoogleSignInButton = ({ theme }) => (
+  const GoogleSignInButton = () => (
     <SubmitButton
       bg={theme.colors.white}
       color={theme.colors.black}
@@ -190,11 +189,9 @@ const Loginpage = () => {
 
   const SignUpLink = () => (
     <div style={{ textAlign: "center", marginTop: "1rem" }}>
-      <span>
-        <StyledLink to="/register">
-          Don’t have an account? <strong>Sign up</strong>
-        </StyledLink>
-      </span>
+      <StyledLink to="/register">
+        Don’t have an account? <strong>Sign up</strong>
+      </StyledLink>
     </div>
   );
 
@@ -221,12 +218,12 @@ const Loginpage = () => {
                       {({ input }) => <PhoneNumberInput input={input} />}
                     </Field>
                     <Paragraph color={theme.colors.darkGrey} fontSize="14px">
-                      we will send you a text with a verification code .
+                      We will send you a text with a verification code.
                     </Paragraph>
                   </Row>
                   <Row>
                     <SubmitButton type="submit">Sign in</SubmitButton>
-                    <GoogleSignInButton theme={theme} />
+                    <GoogleSignInButton />
                   </Row>
                   <SignUpLink />
                 </form>

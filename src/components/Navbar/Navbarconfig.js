@@ -1,5 +1,5 @@
 const navItems = [
-  { path: "/", element: "Home", end: true },
+  { path: "/dashboard", element: "Home", end: true },
   { path: "/Discover", element: "Discover" },
   { path: "/Bookings", element: "Bookings" },
   { path: "/Services", element: "Services" },

@@ -57,6 +57,7 @@ const Row = styled.div`
 
 const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
   const progress = (currentStep / totalSteps) * 100;
+  console.log(progress, "Progress");
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -73,6 +74,10 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
     {
       path: "/onboarding/social-proof",
       next: "/onboarding/about-you",
+    },
+    {
+      path: "/onboarding/about-you",
+      next: "/dashboard",
     },
   ];
 
@@ -95,7 +100,7 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
     <>
       <StepperContainer>
         <ProgressBar>
-          <Progress progress={progress} />
+          <Progress progress={progress > 0 ? progress : 25} />
         </ProgressBar>
         <Steps>
           {Array.from({ length: totalSteps }).map((_, index) => (

@@ -25,7 +25,7 @@ const Navbar = ({ hideNavbar }) => {
       </div>
       {!hideNavbar && (
         <NavContainer nomargin>
-          <Nav>
+          <Nav >
             <NavList>
               {navItems.map(({ path, element, end }) => (
                 <NavItem key={path}>

@@ -13,7 +13,8 @@ const LayoutContainer = styled.div`
 const Content = styled.main`
   flex: 1;
   padding: 2rem;
-  margin: 0 auto;
+  width: 90%;
+  margin: 0 auto; /* Adds left and right gap */
 `;
 
 const MainLayout = () => {

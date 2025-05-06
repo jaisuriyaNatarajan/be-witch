@@ -1,15 +1,27 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import StudioBanner from "../components/banner/StudioBanner";
+import profileAvatar from "../assets/sampleProfile.png";
+import jude from "../assets/judebot/jude.png";
+import GetInspired from "../components/GetInspired/GetInspired";
+import Button from "../components/Button/Button";
 
 const Home = () => {
-  const Container = styled.div``;
+  const theme = useTheme();
+
+  const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 78px;
+  `;
 
   const Row = styled.div`
     display: flex;
     gap: 24px;
     flex-direction: ${(props) =>
       props.row ? "row" : props.column ? "column" : "row"};
+    height: ${(props) => props.height || "auto"};
   `;
 
   const Cell = styled.div`
@@ -27,12 +39,27 @@ const Home = () => {
     border: ${(props) => props.border || "none"};
     border-radius: ${(props) => props.borderRadius || "0"};
   `;
+  const ImageContainer = styled.div`
+    cursor: pointer;
+    position: relative;
+  `;
 
   return (
     <Container>
       <Row column>
         <Cell row gap="12px" align="center">
-          <Cell>Avatar circle</Cell>
+          <ImageContainer>
+            <img
+              src={profileAvatar}
+              alt="Profile Avatar"
+              style={{
+                width: 84,
+                height: 84,
+                borderRadius: 200,
+                objectFit: "cover",
+              }}
+            />
+          </ImageContainer>
           <Cell column>
             <Cell>Olivia Studio</Cell>
             <Cell margin="12px 0px 0px 0px" row gap="8px">
@@ -49,13 +76,63 @@ const Home = () => {
           <StudioBanner />
         </Cell>
       </Row>
-      <Row>
-        <Cell></Cell>
-        <Cell></Cell>
+      <Row column>
+        <Cell row gap="12px" align="center" justify="space-between">
+          <Cell>
+            <h3>Get Inspired </h3>
+          </Cell>
+          <Cell>
+            <Button
+              bg={theme.colors.black}
+              color={theme.colors.white}
+              border="1px solid #D5D7DA"
+            >
+              Portfolio
+            </Button>
+            <Button
+              color={theme.colors.black}
+              bg={theme.colors.white}
+              border="1px solid #D5D7DA"
+            >
+              People
+            </Button>
+          </Cell>
+        </Cell>
+        <Cell>
+          <GetInspired />
+        </Cell>
       </Row>
-      <Row>
-        <Cell></Cell>
-        <Cell></Cell>
+      <Row column height="218px">
+        <Cell>
+          <h3>We’re here to help</h3>
+        </Cell>
+        <Cell
+          row
+          gap="12px"
+          align="center"
+          height="158px"
+          background={theme.gradients.lightGray}
+          borderRadius="16px"
+        >
+          <Cell margin="40px 16px 48px 32px">
+            <img
+              src={jude}
+              alt="Jude Bot"
+              style={{
+                width: 70,
+                height: 70,
+                objectFit: "cover",
+              }}
+            />
+          </Cell>
+          <Cell column align="flex-start">
+            <h4>Chat with jude</h4>
+            <p>
+              Need some guidance? Contact your superhost for information and
+              tips
+            </p>
+          </Cell>
+        </Cell>
       </Row>
     </Container>
   );

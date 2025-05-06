@@ -1,15 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import React, { use } from "react";
+import styled, { useTheme } from "styled-components";
 import bannerImage from "../../assets/banner-laptop.png";
 
 const Banner = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #bdbdbd66;
+  background: ${({ theme }) => theme.gradients.lightGray};
   border-radius: 16px;
   padding: 24px 32px;
-  margin: 40px 0;
   width: 100%;
   max-height: 120px;
 `;
@@ -58,7 +57,7 @@ const StudioBanner = () => {
       <Image
         src={bannerImage}
         alt="Banner"
-        style={{ width: "318px", height: "207px" }}
+        style={{ width: "398px", height: "231px" }}
       />
     </Banner>
   );

@@ -10,5 +10,15 @@ export const theme = {
     black: "#000000",
     danger: "#ff4d4f",
     success: "#52c41a",
+    profileBanner:
+      "background: linear-gradient(89.37deg, #EDEDED 6.1%, rgba(189, 189, 189, 0.4) 73.74%)",
+  },
+  gradients: {
+    lightGray:
+      "linear-gradient(89.37deg, #EDEDED 6.1%, rgba(189, 189, 189, 0.4) 73.74%)",
+    darkMetallic: `
+      linear-gradient(0deg, #96A1A8, #96A1A8),
+      linear-gradient(90deg, #3C3C3C 0%, #1A1A1A 40%, #3C3C3C 60%, #444444 100%)
+    `,
   },
 };

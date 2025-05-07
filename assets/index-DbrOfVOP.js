@@ -8547,7 +8547,7 @@ ${Jz.tablet`
   max-width: 1140px;
   margin: 0 auto;
   padding: 1rem;
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     flex-direction: column;
     height: auto;
   }
@@ -8558,7 +8558,7 @@ ${Jz.tablet`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     width: 100%;
     padding: 1rem;
   }
@@ -8568,7 +8568,7 @@ ${Jz.tablet`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     display: none;
   }
 `,Iue=V.div`

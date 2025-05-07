@@ -11,7 +11,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <OnboardingProvider>
         <GlobalStyles />
-        <BrowserRouter>
+        <BrowserRouter basename="/be-witch">
           <AppRoutes />
         </BrowserRouter>
       </OnboardingProvider>

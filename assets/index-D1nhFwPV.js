@@ -8543,19 +8543,25 @@ ${Jz.tablet`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 1140px;
+  width: 100%;
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 1rem;
   @media (max-width: 768px) {
     flex-direction: column;
+    height: auto;
   }
 `,Lue=V.div`
   flex: 1;
   background: #fff;
   padding: 2rem;
-  overflow-y: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1rem;
+  }
 `,Cue=V.div`
   flex: 1;
   background-color: #f5f5f5;
@@ -8591,6 +8597,7 @@ ${Jz.tablet`
   flex-direction: column;
   align-items: center;
   font-family: "Inter", sans-serif;
+  width: 100%;
 `,zue=V.input`
   width: 80px;
   height: 80px;
@@ -8601,9 +8608,8 @@ ${Jz.tablet`
   background: #f5f5f5;
   color: #101828;
   outline: none;
-  transition: 0.3s ease;
   margin: 0 5px;
-  position: relative;
+  transition: 0.3s ease;
 
   &:focus {
     border: 2px solid #e84c6a;
@@ -8612,12 +8618,19 @@ ${Jz.tablet`
 
   &::placeholder {
     color: #d0d5dd;
-    font-size: 48px;
-    text-align: center;
-    font-weight: 500px;
-    position: absolute;
-    top: 20%;
-    left: 32%;
+    font-size: 32px;
+  }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
   }
 `,$ue=V.p`
   margin-top: 10px;
@@ -8627,19 +8640,12 @@ ${Jz.tablet`
   text-align: center;
 
   &:hover {
-    color:#e84c6a;
+    color: #e84c6a;
     text-decoration: underline;
   }
-  .resend-otp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-  }
-  span {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18.75px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `,ez=V.div`
   display: flex;
@@ -8648,8 +8654,14 @@ ${Jz.tablet`
   flex-direction: ${a=>a.row?"row":"column"};
   gap: 10px;
   height: 100%;
-  div:nth-child(3) {
-    margin: 20px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 5px;
   }
 `,que=V.footer`
   font-size: 0.8rem;
@@ -8659,14 +8671,35 @@ ${Jz.tablet`
   position: absolute;
   bottom: 0;
   left: 0;
-`,Hue=()=>{const a=bi(),i=ji(),[c,s]=z.useState(""),h=V(o1)`
-    color: ${u=>u.theme.colors.black};
-    text-decoration: none;
 
-    &:hover {
-      color: ${u=>u.theme.colors.primary};
-    }
-  `;return y.jsxs(y.Fragment,{children:[y.jsx(z2,{src:zi,alt:"BeWitch Logo",style:{position:"absolute",top:"50px",left:"50px"}}),y.jsxs(ez,{children:[y.jsx("div",{children:y.jsx(Er,{name:"Mail",borderCircle:!0,bordersize:"10",height:"48px",width:"48px",nopadding:!0})}),y.jsx("div",{children:y.jsx("h4",{children:"Please check your email."})}),y.jsx("div",{children:"We've sent a code to 9078563412"}),y.jsxs(jue,{children:[y.jsx(Aue,{value:c,onChange:s,numInputs:4,isInputNum:!0,shouldAutoFocus:!0,renderInput:u=>y.jsx(zue,{...u,placeholder:"0",style:{width:"80px",height:"80px"}})}),y.jsx($ue,{children:y.jsxs("div",{className:"resend-otp",children:[y.jsx("div",{children:"Didn’t get a code?"}),y.jsx("div",{children:y.jsx("span",{children:"Click to resend."})})]})})]}),y.jsxs(ez,{row:!0,children:[y.jsx(Ii,{width:"213px",height:"44px",bg:a.colors.white,color:a.colors.black,border:"1px solid #A3A3A3",onClick:()=>i(-1),children:"Cancel"}),y.jsx(Ii,{width:"213px",height:"44px",bg:a.colors.black,color:a.colors.white,hoverColor:a.colors.white,border:!0,onClick:()=>i("/dashboard"),children:"Verify"})]}),y.jsx(Tr,{children:y.jsxs(h,{to:"/login",children:["Already have an account?   ",y.jsx("strong",{children:"Login"})]})})]}),y.jsx(que,{children:"© bewittch 2025"})]})},Pue="data:image/png;base64,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",Vue=V.footer`
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+`,Hue=V(z2)`
+  position: absolute;
+  top: 50px;
+  left: 50px;
+
+  @media (max-width: 768px) {
+    top: 20px;
+    left: 20px;
+    width: 100px;
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 10px;
+    width: 80px;
+  }
+`,Pue=V(o1)`
+  color: ${a=>a.theme.colors.black};
+  text-decoration: none;
+
+  &:hover {
+    color: ${a=>a.theme.colors.primary};
+  }
+`,Vue=()=>{const a=bi(),i=ji(),[c,s]=z.useState("");return y.jsxs(y.Fragment,{children:[y.jsx(Hue,{src:zi,alt:"BeWitch Logo"}),y.jsxs(ez,{children:[y.jsx(Er,{name:"Mail",borderCircle:!0,bordersize:"10",height:"48px",width:"48px",nopadding:!0}),y.jsx("h4",{children:"Please check your email."}),y.jsxs("div",{children:["We've sent a code to ",y.jsx("strong",{children:"9078563412"})]}),y.jsxs(jue,{children:[y.jsx(Aue,{value:c,onChange:s,numInputs:4,isInputNum:!0,shouldAutoFocus:!0,renderInput:h=>y.jsx(zue,{...h,placeholder:"0",style:{width:"80px",height:"80px"}})}),y.jsxs($ue,{children:["Didn’t get a code? ",y.jsx("span",{children:"Click to resend."})]})]}),y.jsxs(ez,{row:!0,children:[y.jsx(Ii,{width:"213px",height:"44px",bg:a.colors.white,color:a.colors.black,border:"1px solid #A3A3A3",onClick:()=>i(-1),children:"Cancel"}),y.jsx(Ii,{width:"213px",height:"44px",bg:a.colors.black,color:a.colors.white,hoverColor:a.colors.white,border:!0,onClick:()=>i("/dashboard"),children:"Verify"})]}),y.jsx(Tr,{children:y.jsxs(Pue,{to:"/login",children:["Already have an account?   ",y.jsx("strong",{children:"Login"})]})})]}),y.jsx(que,{children:"© bewittch 2025"})]})},Rue="data:image/png;base64,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",Fue=V.footer`
   font-size: 0.8rem;
   color: #aaa;
   text-align: left;
@@ -8674,14 +8707,14 @@ ${Jz.tablet`
   position: absolute;
   bottom: 0;
   left: 0;
-`,Rue=V.div`
+`,Eue=V.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
-`,Fue=V.header`
+`,Bue=V.header`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8689,13 +8722,13 @@ ${Jz.tablet`
   position: absolute;
   left: 50px;
   top: 50px;
-`,Eue=V.div`
+`,Due=V.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   width: 100%;
-`,Bue=V.div`
+`,Tue=V.div`
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -8704,13 +8737,13 @@ ${Jz.tablet`
     flex-direction: column;
     align-items: center;
   `}
-`,Due=V.div`
+`,Oue=V.div`
   flex: 1;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   padding: 2rem;
-`,Tue=V.label`
+`,Uue=V.label`
   font-size: 0.85rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
@@ -8721,12 +8754,12 @@ ${Jz.tablet`
   gap: 12px;
   width: 100%;
   margin-bottom: 1rem;
-`,Oue=V.h1`
+`,Zue=V.h1`
   font-family: Inter;
   font-weight: 700;
   font-size: 36px;
   line-height: 44px;
-`,Uue=V.p`
+`,Gue=V.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
@@ -8741,7 +8774,7 @@ ${Jz.tablet`
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-`,Zue=V(o1)`
+`,Wue=V(o1)`
   color: ${a=>a.theme.colors.darkGrey};
   text-decoration: none;
   font-size: 14px;
@@ -8752,28 +8785,28 @@ ${Jz.tablet`
   &:hover {
     color: ${a=>a.theme.colors.primary};
   }
-`,oz=()=>{const a=bi(),i=ji(),c=()=>{i("/signup/otp-verification")},s=({input:f})=>y.jsxs("div",{style:{display:"flex",alignItems:"center",border:"1px solid #ccc",borderRadius:"8px",overflow:"hidden",backgroundColor:"#fff",height:"50px"},children:[y.jsx("div",{style:{backgroundColor:"#F6F6F6",padding:"0 12px",borderRight:"1px solid #ccc",height:"100%",display:"flex",alignItems:"center",fontSize:"14px"},children:y.jsx("span",{children:"IN"})}),y.jsx("input",{...f,placeholder:"Enter your phone number",required:!0,style:{border:"none",outline:"none",flex:1,padding:"0 12px",fontSize:"14px"}})]}),h=()=>y.jsxs(nz,{bg:a.colors.white,color:a.colors.black,style:{display:"flex",alignItems:"center",justifyContent:"center"},children:[y.jsx("img",{src:Pue,height:"24px",width:"24px",alt:"Google Logo",style:{marginRight:"8px"}}),"Sign in with Google"]}),u=()=>y.jsx("div",{style:{textAlign:"center",marginTop:"1rem"},children:y.jsxs(Zue,{to:"/register",children:["Don’t have an account? ",y.jsx("strong",{children:"Sign up"})]})});return y.jsxs(Rue,{children:[y.jsx(Fue,{children:y.jsx(z2,{src:zi,alt:"BeWitch Logo"})}),y.jsx(Eue,{children:y.jsx(Bue,{children:y.jsxs(Due,{children:[y.jsx(Oue,{children:"Let’s Get You Known"}),y.jsx(Uue,{children:"Set up your profile to get discovered by clients and collaborators."}),y.jsx(f$,{onSubmit:c,render:({handleSubmit:f})=>y.jsxs("form",{onSubmit:f,children:[y.jsxs(tz,{children:[y.jsx(Tue,{children:"Phone Number*"}),y.jsx(vi,{name:"phoneNumber",component:"input",type:"text",children:({input:g})=>y.jsx(s,{input:g})}),y.jsx(Tr,{color:a.colors.darkGrey,fontSize:"14px",children:"We will send you a text with a verification code."})]}),y.jsxs(tz,{children:[y.jsx(nz,{type:"submit",children:"Sign in"}),y.jsx(h,{})]}),y.jsx(u,{})]})})]})})}),y.jsx(Vue,{children:"© bewittch 2025"})]})},Jc=()=>{const a=Ot(),i=()=>({"/signup/otp-verification":y.jsx(Hue,{}),"/login":y.jsx(oz,{}),"/register":y.jsx(xue,{})})[a.pathname]||y.jsx(oz,{});return y.jsx(y.Fragment,{children:y.jsx(Nue,{children:i()})})},Gue=V.div`
+`,oz=()=>{const a=bi(),i=ji(),c=()=>{i("/signup/otp-verification")},s=({input:f})=>y.jsxs("div",{style:{display:"flex",alignItems:"center",border:"1px solid #ccc",borderRadius:"8px",overflow:"hidden",backgroundColor:"#fff",height:"50px"},children:[y.jsx("div",{style:{backgroundColor:"#F6F6F6",padding:"0 12px",borderRight:"1px solid #ccc",height:"100%",display:"flex",alignItems:"center",fontSize:"14px"},children:y.jsx("span",{children:"IN"})}),y.jsx("input",{...f,placeholder:"Enter your phone number",required:!0,style:{border:"none",outline:"none",flex:1,padding:"0 12px",fontSize:"14px"}})]}),h=()=>y.jsxs(nz,{bg:a.colors.white,color:a.colors.black,style:{display:"flex",alignItems:"center",justifyContent:"center"},children:[y.jsx("img",{src:Rue,height:"24px",width:"24px",alt:"Google Logo",style:{marginRight:"8px"}}),"Sign in with Google"]}),u=()=>y.jsx("div",{style:{textAlign:"center",marginTop:"1rem"},children:y.jsxs(Wue,{to:"/register",children:["Don’t have an account? ",y.jsx("strong",{children:"Sign up"})]})});return y.jsxs(Eue,{children:[y.jsx(Bue,{children:y.jsx(z2,{src:zi,alt:"BeWitch Logo"})}),y.jsx(Due,{children:y.jsx(Tue,{children:y.jsxs(Oue,{children:[y.jsx(Zue,{children:"Let’s Get You Known"}),y.jsx(Gue,{children:"Set up your profile to get discovered by clients and collaborators."}),y.jsx(f$,{onSubmit:c,render:({handleSubmit:f})=>y.jsxs("form",{onSubmit:f,children:[y.jsxs(tz,{children:[y.jsx(Uue,{children:"Phone Number*"}),y.jsx(vi,{name:"phoneNumber",component:"input",type:"text",children:({input:g})=>y.jsx(s,{input:g})}),y.jsx(Tr,{color:a.colors.darkGrey,fontSize:"14px",children:"We will send you a text with a verification code."})]}),y.jsxs(tz,{children:[y.jsx(nz,{type:"submit",children:"Sign in"}),y.jsx(h,{})]}),y.jsx(u,{})]})})]})})}),y.jsx(Fue,{children:"© bewittch 2025"})]})},Jc=()=>{const a=Ot(),i=()=>({"/signup/otp-verification":y.jsx(Vue,{}),"/login":y.jsx(oz,{}),"/register":y.jsx(xue,{})})[a.pathname]||y.jsx(oz,{});return y.jsx(y.Fragment,{children:y.jsx(Nue,{children:i()})})},Que=V.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`,Wue=V.div`
+`,Xue=V.div`
   height: 6px;
   width: 100%;
   background-color: #eee;
   border-radius: 5px;
   margin: 10px 0;
   overflow: hidden;
-`,Que=V.div`
+`,Kue=V.div`
   height: 100%;
   width: ${({progress:a})=>a}%;
   background-color: #000;
   transition: width 0.3s ease-in-out;
-`,Xue=V.div`
+`,Yue=V.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-top: 5px;
-`,Kue=V.div`
+`,Jue=V.div`
   flex: 1;
   text-align: center;
   font-size: 14px;
@@ -8787,33 +8820,33 @@ ${Jz.tablet`
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-`,Yue=V.div`
+`,epe=V.div`
   display: flex;
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-`,Jue=({currentStep:a=1,totalSteps:i=4})=>{const c=a/i*100;console.log(c,"Progress");const s=bi(),h=Ot(),u=ji(),f=[{path:"/onboarding",next:"/onboarding/upload-photo"},{path:"/onboarding/upload-photo",next:"/onboarding/social-proof"},{path:"/onboarding/social-proof",next:"/onboarding/about-you"},{path:"/onboarding/about-you",next:"/dashboard"}],g=h.pathname==="/onboarding/about-you",x=f.findIndex(N=>N.path===h.pathname),k=()=>{x!==-1&&f[x].next&&u(f[x].next)},C=()=>{u(-1)};return y.jsxs(y.Fragment,{children:[y.jsxs(Gue,{children:[y.jsx(Wue,{children:y.jsx(Que,{progress:c>0?c:25})}),y.jsx(Xue,{children:Array.from({length:i}).map((N,b)=>y.jsx(Kue,{},b))})]}),y.jsxs(Yue,{children:[y.jsx(az,{onClick:C,bg:s.colors.white,color:s.colors.black,children:"Back"}),y.jsx(az,{onClick:k,children:g?"Create profile":"Next"})]})]})},epe=V.div`
+`,tpe=({currentStep:a=1,totalSteps:i=4})=>{const c=a/i*100;console.log(c,"Progress");const s=bi(),h=Ot(),u=ji(),f=[{path:"/onboarding",next:"/onboarding/upload-photo"},{path:"/onboarding/upload-photo",next:"/onboarding/social-proof"},{path:"/onboarding/social-proof",next:"/onboarding/about-you"},{path:"/onboarding/about-you",next:"/dashboard"}],g=h.pathname==="/onboarding/about-you",x=f.findIndex(N=>N.path===h.pathname),k=()=>{x!==-1&&f[x].next&&u(f[x].next)},C=()=>{u(-1)};return y.jsxs(y.Fragment,{children:[y.jsxs(Que,{children:[y.jsx(Xue,{children:y.jsx(Kue,{progress:c>0?c:25})}),y.jsx(Yue,{children:Array.from({length:i}).map((N,b)=>y.jsx(Jue,{},b))})]}),y.jsxs(epe,{children:[y.jsx(az,{onClick:C,bg:s.colors.white,color:s.colors.black,children:"Back"}),y.jsx(az,{onClick:k,children:g?"Create profile":"Next"})]})]})},npe=V.div`
   display: flex;
   flex-direction: column;
   min-height: 95vh;
   padding: 20px 40px;
   box-sizing: border-box;
   justify-content: space-between;
-`,tpe=V.div`
+`,ope=V.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
-`,npe=V.div`
+`,ape=V.div`
   padding-top: 10px;
-`,w2=({children:a})=>{const i=Ot(),s=["/","/upload-photo","/social-proof","/about-you"].findIndex(h=>`/onboarding${h}`===i.pathname)+1;return y.jsxs(epe,{children:[y.jsx(z2,{src:zi}),y.jsx(tpe,{children:a}),y.jsx(npe,{children:y.jsx(Jue,{currentStep:s})})]})},ope="/be-witch/assets/candidphotography-CUlrxXul.png",ape="/be-witch/assets/ContentCreator-BPAEq8st.png",rpe="/be-witch/assets/CreativeDirector-B_dy4gIk.png",ipe="/be-witch/assets/Designer-FQT02Gmv.png",cpe="/be-witch/assets/Femalemodel-T2PbyFB-.png",dpe="/be-witch/assets/Hairstylist-luGzu4X0.png",v$="/be-witch/assets/MakeupArtists-D9iCZT2Q.png",lpe="/be-witch/assets/MaleModel-BIFRblGK.png",spe="/be-witch/assets/Photographer-CoJ2wufz.png",hpe="/be-witch/assets/Retoucher-BgTo5msE.png",upe="/be-witch/assets/Stylist-CfkEjkSi.png",ppe="/be-witch/assets/Videographer-n8A2i9pr.png",ype=[{role:"Female model",image:cpe},{role:"Male model",image:lpe},{role:"Makeup Artist",image:v$},{role:"Photographer",image:spe},{role:"Stylist",image:upe},{role:"Designer",image:ipe},{role:"Hair stylist",image:dpe},{role:"Videographer",image:ppe},{role:"Retoucher",image:hpe},{role:"Content Creator",image:ape},{role:"Creative Director",image:rpe},{role:"Influencer",image:ope}],kpe=V.div`
+`,w2=({children:a})=>{const i=Ot(),s=["/","/upload-photo","/social-proof","/about-you"].findIndex(h=>`/onboarding${h}`===i.pathname)+1;return y.jsxs(npe,{children:[y.jsx(z2,{src:zi}),y.jsx(ope,{children:a}),y.jsx(ape,{children:y.jsx(tpe,{currentStep:s})})]})},rpe="/be-witch/assets/candidphotography-CUlrxXul.png",ipe="/be-witch/assets/ContentCreator-BPAEq8st.png",cpe="/be-witch/assets/CreativeDirector-B_dy4gIk.png",dpe="/be-witch/assets/Designer-FQT02Gmv.png",lpe="/be-witch/assets/Femalemodel-T2PbyFB-.png",spe="/be-witch/assets/Hairstylist-luGzu4X0.png",v$="/be-witch/assets/MakeupArtists-D9iCZT2Q.png",hpe="/be-witch/assets/MaleModel-BIFRblGK.png",upe="/be-witch/assets/Photographer-CoJ2wufz.png",ppe="/be-witch/assets/Retoucher-BgTo5msE.png",ype="/be-witch/assets/Stylist-CfkEjkSi.png",kpe="/be-witch/assets/Videographer-n8A2i9pr.png",fpe=[{role:"Female model",image:lpe},{role:"Male model",image:hpe},{role:"Makeup Artist",image:v$},{role:"Photographer",image:upe},{role:"Stylist",image:ype},{role:"Designer",image:dpe},{role:"Hair stylist",image:spe},{role:"Videographer",image:kpe},{role:"Retoucher",image:ppe},{role:"Content Creator",image:ipe},{role:"Creative Director",image:cpe},{role:"Influencer",image:rpe}],mpe=V.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
   max-width: 1000px;
-`,fpe=V.div`
+`,vpe=V.div`
   width: 130px;
   border-radius: 10px;
   overflow: hidden;
@@ -8827,26 +8860,26 @@ ${Jz.tablet`
   &:hover {
     transform: translateY(-5px);
   }
-`,mpe=V.img`
+`,gpe=V.img`
   width: 100%;
   height: 150px;
   object-fit: cover;
-`,vpe=V.div`
+`,Mpe=V.div`
   padding: 10px;
   text-align: center;
   font-weight: 500;
   font-size: 14px;
-`,gpe=()=>{const[a,i]=z.useState(null),{updateFormData:c}=$2(),s=(h,u)=>{i(u),c({artist:h})};return y.jsx(kpe,{children:ype.map((h,u)=>y.jsxs(fpe,{isFocused:a===u,onClick:()=>s(h.role,u),children:[y.jsx(mpe,{src:h.image,alt:h.role}),y.jsx(vpe,{children:h.role})]},u))})},Mpe=()=>y.jsx(w2,{children:y.jsx(gpe,{})}),xpe=V.div`
+`,xpe=()=>{const[a,i]=z.useState(null),{updateFormData:c}=$2(),s=(h,u)=>{i(u),c({artist:h})};return y.jsx(mpe,{children:fpe.map((h,u)=>y.jsxs(vpe,{isFocused:a===u,onClick:()=>s(h.role,u),children:[y.jsx(gpe,{src:h.image,alt:h.role}),y.jsx(Mpe,{children:h.role})]},u))})},wpe=()=>y.jsx(w2,{children:y.jsx(xpe,{})}),_pe=V.div`
   max-width: 600px;
   margin: 4rem auto;
   text-align: center;
-`,wpe=V.h1`
+`,Lpe=V.h1`
   font-size: 2rem;
   font-weight: 700;
-`,_pe=V.p`
+`,Cpe=V.p`
   color: #666;
   margin-top: 0.5rem;
-`,Lpe=V.div`
+`,Ipe=V.div`
   margin-top: 2rem;
   padding: 2rem;
   background-color: #f5f5f5;
@@ -8860,7 +8893,7 @@ ${Jz.tablet`
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
-`,Cpe=V.label`
+`,Spe=V.label`
   display: inline-block;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -8874,20 +8907,20 @@ ${Jz.tablet`
   &:hover {
     background-color: #333;
   }
-`,Ipe=V.input`
+`,bpe=V.input`
   display: none;
-`,Spe=()=>{const[a,i]=z.useState(v$),{updateFormData:c}=$2(),s=h=>{const u=h.target.files[0];u&&i(URL.createObjectURL(u))};return z.useEffect(()=>{c({profilePicture:a})},[a]),y.jsxs(xpe,{children:[y.jsx(wpe,{children:"Upload your profile picture"}),y.jsx(_pe,{children:"Help us connect you with opportunities in your area"}),y.jsxs(Lpe,{children:[a&&y.jsx(rz,{src:a,alt:"Profile Preview"}),!a&&y.jsx(rz,{src:"https://via.placeholder.com/120x120.png?text=👤",alt:"Default avatar"}),y.jsx(Cpe,{htmlFor:"profile-upload",children:"📤 Upload profile picture"}),y.jsx(Ipe,{type:"file",id:"profile-upload",accept:"image/*",onChange:s})]})]})},bpe=V.div`
+`,Npe=()=>{const[a,i]=z.useState(v$),{updateFormData:c}=$2(),s=h=>{const u=h.target.files[0];u&&i(URL.createObjectURL(u))};return z.useEffect(()=>{c({profilePicture:a})},[a]),y.jsxs(_pe,{children:[y.jsx(Lpe,{children:"Upload your profile picture"}),y.jsx(Cpe,{children:"Help us connect you with opportunities in your area"}),y.jsxs(Ipe,{children:[a&&y.jsx(rz,{src:a,alt:"Profile Preview"}),!a&&y.jsx(rz,{src:"https://via.placeholder.com/120x120.png?text=👤",alt:"Default avatar"}),y.jsx(Spe,{htmlFor:"profile-upload",children:"📤 Upload profile picture"}),y.jsx(bpe,{type:"file",id:"profile-upload",accept:"image/*",onChange:s})]})]})},Ape=V.div`
   max-width: 600px;
   margin: 4rem auto;
   padding: 1rem;
-`,Npe=V.h2`
+`,jpe=V.h2`
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-`,Ape=V.p`
+`,zpe=V.p`
   color: #777;
   margin-bottom: 2rem;
-`,jpe=V.div`
+`,$pe=V.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -8910,23 +8943,23 @@ ${Jz.tablet`
     border-color: #9b5de5;
     outline: none;
   }
-`,zpe=()=>{const{updateFormData:a}=$2(),[i,c]=z.useState({instagram:"",xlink:""}),s=h=>{c({...i,[h.target.name]:h.target.value})};return z.useEffect(()=>{a({socialProof:i})},[i]),y.jsxs(bpe,{children:[y.jsx(Npe,{children:"Social Proof"}),y.jsx(Ape,{children:"Help us connect you with opportunities in your area"}),y.jsxs(jpe,{children:[y.jsxs("div",{children:[y.jsx(iz,{htmlFor:"instagram",children:"Instagram link*"}),y.jsx(cz,{id:"instagram",name:"instagram",placeholder:"www.instagram.com/profilename/9003",value:i.instagram,onChange:s})]}),y.jsxs("div",{children:[y.jsx(iz,{htmlFor:"xlink",children:"X Link"}),y.jsx(cz,{id:"xlink",name:"xlink",placeholder:"www.x.com/profilename/9003",value:i.xlink,onChange:s})]})]})]})},$pe=V.div`
+`,qpe=()=>{const{updateFormData:a}=$2(),[i,c]=z.useState({instagram:"",xlink:""}),s=h=>{c({...i,[h.target.name]:h.target.value})};return z.useEffect(()=>{a({socialProof:i})},[i]),y.jsxs(Ape,{children:[y.jsx(jpe,{children:"Social Proof"}),y.jsx(zpe,{children:"Help us connect you with opportunities in your area"}),y.jsxs($pe,{children:[y.jsxs("div",{children:[y.jsx(iz,{htmlFor:"instagram",children:"Instagram link*"}),y.jsx(cz,{id:"instagram",name:"instagram",placeholder:"www.instagram.com/profilename/9003",value:i.instagram,onChange:s})]}),y.jsxs("div",{children:[y.jsx(iz,{htmlFor:"xlink",children:"X Link"}),y.jsx(cz,{id:"xlink",name:"xlink",placeholder:"www.x.com/profilename/9003",value:i.xlink,onChange:s})]})]})]})},Hpe=V.div`
   max-width: 700px;
   margin: 4rem auto;
   padding: 1rem;
-`,qpe=V.h2`
+`,Ppe=V.h2`
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-`,Hpe=V.p`
+`,Vpe=V.p`
   color: #666;
   margin-bottom: 1.5rem;
-`,Ppe=V.div`
+`,Rpe=V.div`
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
   background-color: #fff;
-`,Vpe=V.textarea`
+`,Fpe=V.textarea`
   width: 100%;
   border: none;
   resize: none;
@@ -8940,7 +8973,7 @@ ${Jz.tablet`
   &:focus {
     outline: none;
   }
-`,Rpe=()=>{const{updateFormData:a,formData:i}=$2(),[c,s]=z.useState("“I'm a certified makeup artist with 5+ years of experience in bridal, editorial, and glam makeovers. Passionate about enhancing natural beauty and collaborating with creatives.”");return z.useEffect(()=>{a({about:c}),console.log("Bio updated successfully!",JSON.stringify(i,null,2))},[c]),y.jsxs($pe,{children:[y.jsx(qpe,{children:"Tell Us About You"}),y.jsx(Hpe,{children:"Give clients and collaborators a quick glimpse into your personality, journey, and expertise."}),y.jsx(Ppe,{children:y.jsx(Vpe,{rows:4,value:c,onChange:h=>s(h.target.value)})})]})},Fpe="/be-witch/assets/MacbookPro-DJjUQKJe.png",Epe=V.div`
+`,Epe=()=>{const{updateFormData:a,formData:i}=$2(),[c,s]=z.useState("“I'm a certified makeup artist with 5+ years of experience in bridal, editorial, and glam makeovers. Passionate about enhancing natural beauty and collaborating with creatives.”");return z.useEffect(()=>{a({about:c}),console.log("Bio updated successfully!",JSON.stringify(i,null,2))},[c]),y.jsxs(Hpe,{children:[y.jsx(Ppe,{children:"Tell Us About You"}),y.jsx(Vpe,{children:"Give clients and collaborators a quick glimpse into your personality, journey, and expertise."}),y.jsx(Rpe,{children:y.jsx(Fpe,{rows:4,value:c,onChange:h=>s(h.target.value)})})]})},Bpe="/be-witch/assets/MacbookPro-DJjUQKJe.png",Dpe=V.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -8952,7 +8985,7 @@ ${Jz.tablet`
   @media (max-width: 768px) {
     flex-direction: column;
   }
-`,Bpe=V.div`
+`,Tpe=V.div`
   max-width: 500px;
   margin-right: 2rem;
 
@@ -8960,10 +8993,10 @@ ${Jz.tablet`
     margin-right: 0;
     margin-bottom: 2rem;
   }
-`,Dpe=V.h3`
+`,Ope=V.h3`
   font-size: 2rem;
   margin-bottom: 0.5rem;
-`,Tpe=V.p`
+`,Upe=V.p`
   color: #555;
   margin-bottom: 1.5rem;
 `,dz=V.div`
@@ -8974,7 +9007,7 @@ ${Jz.tablet`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-`,Ope=V.button`
+`,Zpe=V.button`
   background-color: #ff5c7c;
   color: white;
   padding: 1rem 2rem;
@@ -8991,11 +9024,11 @@ ${Jz.tablet`
   &:focus {
     outline: none;
   }
-`,Upe=V.p`
+`,Gpe=V.p`
   font-size: 0.85rem;
   color: #888;
   margin-top: 1rem;
-`,Zpe=V.div`
+`,Wpe=V.div`
   flex: 1;
   max-width: 600px;
   text-align: center;
@@ -9006,4 +9039,4 @@ ${Jz.tablet`
     height: auto;
     border-radius: 10px;
   }
-`,Gpe=()=>y.jsxs(Epe,{children:[y.jsxs(Bpe,{children:[y.jsx(Dpe,{children:"Let’s Set Up your Profile"}),y.jsx(Tpe,{children:"To start receiving bookings and collaborations, you need to complete both your service and portfolio section"}),y.jsxs(dz,{children:[y.jsx("strong",{children:"Service Section"}),y.jsxs("ul",{children:[y.jsx("li",{children:"Add what you offer"}),y.jsx("li",{children:"Set pricing, availability, and extras"}),y.jsx("li",{children:"Upload sample images"})]})]}),y.jsxs(dz,{children:[y.jsx("strong",{children:"Portfolio Section"}),y.jsxs("ul",{children:[y.jsx("li",{children:"Highlights your best past work"}),y.jsx("li",{children:"Add behind-the-scene content"}),y.jsx("li",{children:"Showcase your style and creativity"})]})]}),y.jsx(Ope,{children:"Start Creating your Website"}),y.jsx(Upe,{children:"This may take around 10–15 mins to complete. Please be patient – a well-built profile gets more visibility and trust."})]}),y.jsx(Zpe,{children:y.jsx("img",{src:Fpe,alt:"Portfolio preview on laptop",style:{width:"100%",height:"auto"}})})]}),Wpe=()=>y.jsxs(vV,{children:[y.jsx(Je,{index:!0,element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/login",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/register",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/signup/otp-verification",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/onboarding",element:y.jsx(Mpe,{})}),y.jsx(Je,{path:"/onboarding/upload-photo",element:y.jsx(w2,{children:y.jsx(Spe,{})})}),y.jsx(Je,{path:"/onboarding/social-proof",element:y.jsx(w2,{children:y.jsx(zpe,{})})}),y.jsx(Je,{path:"/onboarding/about-you",element:y.jsx(w2,{children:y.jsx(Rpe,{})})}),y.jsx(Je,{path:"/web/profile-setup",element:y.jsx(w2,{children:y.jsx(Gpe,{})})}),y.jsxs(Je,{element:y.jsx(Ihe,{}),children:[y.jsx(Je,{path:"/dashboard",element:y.jsx(kR,{})}),y.jsx(Je,{path:"/Bookings",element:y.jsx(fR,{})}),y.jsx(Je,{path:"/Discover",element:y.jsx(mR,{})}),y.jsx(Je,{path:"/Services",element:y.jsx(vR,{})}),y.jsxs(Je,{path:"/profile",element:y.jsx(rhe,{}),children:[y.jsx(Je,{path:"overview",element:y.jsx(She,{})}),y.jsx(Je,{path:"About",element:y.jsx(jhe,{})})]})]})]});function Qpe(){return y.jsx(_P,{theme:KV,children:y.jsxs(hue,{children:[y.jsx(YV,{}),y.jsx(DV,{basename:"/be-witch",children:y.jsx(Wpe,{})})]})})}const Xpe=LH.createRoot(document.getElementById("root"));Xpe.render(y.jsx(Qpe,{}));
+`,Qpe=()=>y.jsxs(Dpe,{children:[y.jsxs(Tpe,{children:[y.jsx(Ope,{children:"Let’s Set Up your Profile"}),y.jsx(Upe,{children:"To start receiving bookings and collaborations, you need to complete both your service and portfolio section"}),y.jsxs(dz,{children:[y.jsx("strong",{children:"Service Section"}),y.jsxs("ul",{children:[y.jsx("li",{children:"Add what you offer"}),y.jsx("li",{children:"Set pricing, availability, and extras"}),y.jsx("li",{children:"Upload sample images"})]})]}),y.jsxs(dz,{children:[y.jsx("strong",{children:"Portfolio Section"}),y.jsxs("ul",{children:[y.jsx("li",{children:"Highlights your best past work"}),y.jsx("li",{children:"Add behind-the-scene content"}),y.jsx("li",{children:"Showcase your style and creativity"})]})]}),y.jsx(Zpe,{children:"Start Creating your Website"}),y.jsx(Gpe,{children:"This may take around 10–15 mins to complete. Please be patient – a well-built profile gets more visibility and trust."})]}),y.jsx(Wpe,{children:y.jsx("img",{src:Bpe,alt:"Portfolio preview on laptop",style:{width:"100%",height:"auto"}})})]}),Xpe=()=>y.jsxs(vV,{children:[y.jsx(Je,{index:!0,element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/login",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/register",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/signup/otp-verification",element:y.jsx(Jc,{})}),y.jsx(Je,{path:"/onboarding",element:y.jsx(wpe,{})}),y.jsx(Je,{path:"/onboarding/upload-photo",element:y.jsx(w2,{children:y.jsx(Npe,{})})}),y.jsx(Je,{path:"/onboarding/social-proof",element:y.jsx(w2,{children:y.jsx(qpe,{})})}),y.jsx(Je,{path:"/onboarding/about-you",element:y.jsx(w2,{children:y.jsx(Epe,{})})}),y.jsx(Je,{path:"/web/profile-setup",element:y.jsx(w2,{children:y.jsx(Qpe,{})})}),y.jsxs(Je,{element:y.jsx(Ihe,{}),children:[y.jsx(Je,{path:"/dashboard",element:y.jsx(kR,{})}),y.jsx(Je,{path:"/Bookings",element:y.jsx(fR,{})}),y.jsx(Je,{path:"/Discover",element:y.jsx(mR,{})}),y.jsx(Je,{path:"/Services",element:y.jsx(vR,{})}),y.jsxs(Je,{path:"/profile",element:y.jsx(rhe,{}),children:[y.jsx(Je,{path:"overview",element:y.jsx(She,{})}),y.jsx(Je,{path:"About",element:y.jsx(jhe,{})})]})]})]});function Kpe(){return y.jsx(_P,{theme:KV,children:y.jsxs(hue,{children:[y.jsx(YV,{}),y.jsx(DV,{basename:"/be-witch",children:y.jsx(Xpe,{})})]})})}const Ype=LH.createRoot(document.getElementById("root"));Ype.render(y.jsx(Kpe,{}));

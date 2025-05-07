@@ -8,11 +8,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../Navbar/Navbar.styles";
 import BeWitch from "../../assets/Bewittch.png";
 
+// Styled Components
 const OtpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Inter", sans-serif;
+  width: 100%;
 `;
 
 const OtpBox = styled.input`
@@ -25,9 +27,8 @@ const OtpBox = styled.input`
   background: #f5f5f5;
   color: #101828;
   outline: none;
-  transition: 0.3s ease;
   margin: 0 5px;
-  position: relative;
+  transition: 0.3s ease;
 
   &:focus {
     border: 2px solid #e84c6a;
@@ -36,12 +37,19 @@ const OtpBox = styled.input`
 
   &::placeholder {
     color: #d0d5dd;
-    font-size: 48px;
-    text-align: center;
-    font-weight: 500px;
-    position: absolute;
-    top: 20%;
-    left: 32%;
+    font-size: 32px;
+  }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
   }
 `;
 
@@ -53,19 +61,12 @@ const ResendText = styled.p`
   text-align: center;
 
   &:hover {
-    color:#e84c6a;
+    color: #e84c6a;
     text-decoration: underline;
   }
-  .resend-otp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-  }
-  span {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18.75px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `;
 
@@ -76,8 +77,14 @@ const Container = styled.div`
   flex-direction: ${(props) => (props.row ? "row" : "column")};
   gap: 10px;
   height: 100%;
-  div:nth-child(3) {
-    margin: 20px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 5px;
   }
 `;
 
@@ -89,49 +96,63 @@ const Footer = styled.footer`
   position: absolute;
   bottom: 0;
   left: 0;
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+`;
+
+const StyledLogo = styled(Logo)`
+  position: absolute;
+  top: 50px;
+  left: 50px;
+
+  @media (max-width: 768px) {
+    top: 20px;
+    left: 20px;
+    width: 100px;
+  }
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 10px;
+    width: 80px;
+  }
+`;
+
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.colors.black};
+  text-decoration: none;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
+  }
 `;
 
 const OtpVerification = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  
   const [otp, setOtp] = useState("");
-
-  const StyledLink = styled(Link)`
-    color: ${(props) => props.theme.colors.black};
-    text-decoration: none;
-
-    &:hover {
-      color: ${(props) => props.theme.colors.primary};
-    }
-  `;
 
   return (
     <>
-      <Logo
-        src={BeWitch}
-        alt="BeWitch Logo"
-        style={{
-          position: "absolute",
-          top: "50px",
-          left: "50px",
-        }}
-      />
+      <StyledLogo src={BeWitch} alt="BeWitch Logo" />
       <Container>
+        <Icon
+          name="Mail"
+          borderCircle
+          bordersize="10"
+          height="48px"
+          width="48px"
+          nopadding
+        />
+        <h4>Please check your email.</h4>
         <div>
-          <Icon
-            name="Mail"
-            borderCircle
-            bordersize="10"
-            height="48px"
-            width="48px"
-            nopadding
-          />
+          We've sent a code to <strong>9078563412</strong>
         </div>
-        <div>
-          <h4>Please check your email.</h4>
-        </div>
-        <div>We've sent a code to 9078563412</div>
+
         <OtpWrapper>
           <OtpInput
             value={otp}
@@ -150,15 +171,12 @@ const OtpVerification = () => {
               />
             )}
           />
+
           <ResendText>
-            <div className="resend-otp">
-              <div>Didn’t get a code?</div>
-              <div>
-                <span>Click to resend.</span>
-              </div>
-            </div>
+            Didn’t get a code? <span>Click to resend.</span>
           </ResendText>
         </OtpWrapper>
+
         <Container row>
           <Button
             width="213px"
@@ -182,12 +200,14 @@ const OtpVerification = () => {
             Verify
           </Button>
         </Container>
+
         <Paragraph>
           <StyledLink to="/login">
             Already have an account? &nbsp; <strong>Login</strong>
           </StyledLink>
         </Paragraph>
       </Container>
+
       <Footer>© bewittch 2025</Footer>
     </>
   );

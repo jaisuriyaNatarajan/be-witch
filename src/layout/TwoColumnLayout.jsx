@@ -8,10 +8,13 @@ const LayoutContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 1140px;
+  width: 100%;
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 1rem;
   @media (max-width: 768px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -19,10 +22,13 @@ const LeftColumn = styled.div`
   flex: 1;
   background: #fff;
   padding: 2rem;
-  overflow-y: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1rem;
+  }
 `;
 
 const RightColumn = styled.div`

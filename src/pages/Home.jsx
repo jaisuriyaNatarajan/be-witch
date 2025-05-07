@@ -4,7 +4,7 @@ import StudioBanner from "../components/banner/StudioBanner";
 import profileAvatar from "../assets/sampleProfile.png";
 import jude from "../assets/judebot/jude.png";
 import GetInspired from "../components/GetInspired/GetInspired";
-import Button from "../components/Button/Button";
+import ToggleSwitch from "../components/Button/ToggleSwitch";
 
 const Home = () => {
   const theme = useTheme();
@@ -82,20 +82,7 @@ const Home = () => {
             <h3>Get Inspired </h3>
           </Cell>
           <Cell>
-            <Button
-              bg={theme.colors.black}
-              color={theme.colors.white}
-              border="1px solid #D5D7DA"
-            >
-              Portfolio
-            </Button>
-            <Button
-              color={theme.colors.black}
-              bg={theme.colors.white}
-              border="1px solid #D5D7DA"
-            >
-              People
-            </Button>
+            <ToggleSwitch />
           </Cell>
         </Cell>
         <Cell>

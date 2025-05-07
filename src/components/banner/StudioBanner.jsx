@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import styled, { useTheme } from "styled-components";
 import bannerImage from "../../assets/banner-laptop.png";
+import { useNavigate } from "react-router-dom";
 
 const Banner = styled.div`
   display: flex;
@@ -45,6 +46,7 @@ const Image = styled.img`
 `;
 
 const StudioBanner = () => {
+  const navigate = useNavigate();
   return (
     <Banner>
       <Text>
@@ -52,7 +54,9 @@ const StudioBanner = () => {
         <SubText>
           Create your studio website. Get discovered. Get booked.
         </SubText>
-        <Button>Get started</Button>
+        <Button onClick={() => navigate("/web/profile-setup")}>
+          Get started
+        </Button>
       </Text>
       <Image
         src={bannerImage}

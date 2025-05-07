@@ -15,6 +15,7 @@ import UploadProfilePicture from "../components/onboarding/UploadProfilePicture 
 import ProfileSetupLayout from "../layout/ProfileSetupLayout";
 import SocialProof from "../components/onboarding/SocialProof";
 import AboutYou from "../components/onboarding/AboutYou";
+import ProfileSetup from "../components/webpages/ProfileSetup";
 
 const AppRoutes = () => {
   return (
@@ -48,6 +49,15 @@ const AppRoutes = () => {
           </ProfileSetupLayout>
         }
       />
+      <Route
+        path="/web/profile-setup"
+        element={
+          <ProfileSetupLayout>
+            <ProfileSetup />
+          </ProfileSetupLayout>
+        }
+      />
+
       <Route element={<MainLayout />}>
         <Route path="/dashboard" element={<Home />} />
         <Route path="/Bookings" element={<Bookings />} />

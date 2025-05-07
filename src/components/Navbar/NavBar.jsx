@@ -25,7 +25,7 @@ const Navbar = ({ hideNavbar }) => {
       </div>
       {!hideNavbar && (
         <NavContainer nomargin>
-          <Nav >
+          <Nav>
             <NavList>
               {navItems.map(({ path, element, end }) => (
                 <NavItem key={path}>
@@ -40,7 +40,7 @@ const Navbar = ({ hideNavbar }) => {
       )}
       <IconContainer>
         {hideNavbar && <Button>Get Bewittch Pro</Button>}
-        {iconItems.map(({ name, size }) => (
+        {iconItems.map(({ name, size, noborder }) => (
           <Icon
             key={name}
             name={name}
@@ -48,6 +48,7 @@ const Navbar = ({ hideNavbar }) => {
             color={theme.colors.black}
             hover
             clickable
+            noborder={noborder}
           />
         ))}
       </IconContainer>

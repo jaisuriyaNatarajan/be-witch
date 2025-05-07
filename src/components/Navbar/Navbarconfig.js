@@ -7,8 +7,8 @@ const navItems = [
 ];
 
 const iconItems = [
-  { name: "Bell", size: 24 },
-  { name: "MessageSquare", size: 24 },
+  { name: "Bell", size: 24, noborder: true },
+  { name: "MessageSquare", size: 24, noborder: true },
 ];
 
 const homeNavItems = [

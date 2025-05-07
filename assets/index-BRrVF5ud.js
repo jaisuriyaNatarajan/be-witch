@@ -8453,6 +8453,7 @@ ${Jz.tablet`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 16px; /* Add some padding around the form on mobile */
 `,pue=V.div`
   width: 100%;
   max-width: 400px;
@@ -8460,6 +8461,11 @@ ${Jz.tablet`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    /* Styles for screens smaller than 600px (typical mobile) */
+    padding: 16px; /* Add padding inside the form container on mobile */
+  }
 `,yue=V.h3`
   font-family: Inter;
   font-weight: 600;
@@ -8467,6 +8473,12 @@ ${Jz.tablet`
   line-height: 30px;
   letter-spacing: 0%;
   text-align: center;
+  margin-bottom: 12px; /* Reduce margin for better mobile spacing */
+
+  @media (max-width: 600px) {
+    font-size: 20px; /* Slightly smaller heading on mobile */
+    line-height: 28px;
+  }
 `,kue=V.p`
   font-weight: 400;
   font-size: 16px;
@@ -8475,40 +8487,62 @@ ${Jz.tablet`
   text-align: center;
   margin: 0px 0px 24px 0px;
   color: ${a=>a.theme.colors.secondary};
+
+  @media (max-width: 600px) {
+    font-size: 14px; /* Slightly smaller subheading on mobile */
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
 `,Kc=V.label`
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0%;
+  margin-bottom: 4px; /* Add a little space below the label */
 `,Yc=V.input`
-  width: calc(100% - 1.5rem);
+  width: calc(100% - 1rem); /* Adjust width for padding */
   padding: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Reduce margin for tighter spacing on mobile */
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
 `,fue=V.select`
-  width: calc(100% - 1.5rem);
+  width: calc(100% - 1rem); /* Adjust width for padding */
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
+  margin-bottom: 0.75rem; /* Reduce margin for tighter spacing on mobile */
 `,mue=V.div`
   display: flex;
-  flex-direction: column;
-  .first-name {
-    margin: 0;
-  }
+  flex-direction: column; /* Stack elements vertically on mobile */
+  gap: 0; /* Remove gap between first and last name on mobile */
+
   & > div {
     flex: 1;
+    margin-bottom: 0.75rem; /* Add margin between the stacked inputs */
+  }
+
+  .first-name {
+    margin-right: 0; /* Remove right margin for the first name on mobile */
+  }
+
+  @media (min-width: 601px) {
+    flex-direction: row; /* Keep side-by-side on larger screens */
+    gap: 0.5rem; /* Add gap between first and last name on larger screens */
+    & > div {
+      margin-bottom: 1rem; /* Restore larger margin on larger screens */
+    }
   }
 `,Yj=V.p`
   font-size: 0.75rem;
   color: #777;
+  margin-top: 4px; /* Add a little space above the helper text */
+  margin-bottom: 0.75rem; /* Add some bottom margin */
 `,vue=V.p`
   font-size: 0.75rem;
   color: #666;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; 
 
   a {
     color: #000;
@@ -8517,7 +8551,7 @@ ${Jz.tablet`
     margin: 0 0.25rem;
   }
 `,gue=V.button`
-  width: calc(100% - 1.5rem);
+  width: 100%; /* Make the button full width on mobile */
   padding: 0.9rem;
   background-color: #000;
   color: white;
@@ -8526,6 +8560,7 @@ ${Jz.tablet`
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
+  margin-bottom: 1.5rem; /* Add some bottom margin to the button */
 
   &:hover {
     background-color: #111;
@@ -8533,12 +8568,12 @@ ${Jz.tablet`
 `,Mue=V.footer`
   font-size: 0.7rem;
   color: #aaa;
-  text-align: left;
+  text-align: center; /* Center the footer text on mobile */
   margin-top: 2rem;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-`,xue=()=>{const a=ji(),{updateSignupData:i}=$2(),c=s=>{i({legalName:`${s.firstName} ${s.lastName}`,dob:s.dob,location:s.location,email:s.email}),a("/onboarding")};return y.jsxs(y.Fragment,{children:[y.jsx(z2,{src:zi,alt:"BeWitch Logo"}),y.jsx(uue,{children:y.jsxs(pue,{children:[y.jsx(yue,{children:"Finish signing Up"}),y.jsx(kue,{children:"Join the world of beauty, fashion, connections."}),y.jsx(f$,{onSubmit:c,render:({handleSubmit:s})=>y.jsxs("form",{onSubmit:s,children:[y.jsx(Kc,{children:"Legal Name*"}),y.jsxs(mue,{children:[y.jsx(vi,{name:"firstName",component:"input",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"First name on ID",className:"first-name",required:!0})}),y.jsx(vi,{name:"lastName",component:"input",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"Last name on ID",required:!0})})]}),y.jsx(Kc,{children:"Date of Birth*"}),y.jsx(vi,{name:"dob",component:"input",type:"date",children:({input:h})=>y.jsx(Yc,{...h,required:!0})}),y.jsx(Kc,{children:"Location*"}),y.jsx(vi,{name:"location",component:"select",children:({input:h})=>y.jsxs(fue,{...h,required:!0,children:[y.jsx("option",{value:"",children:"Select"}),y.jsx("option",{value:"Chennai",children:"Chennai"}),y.jsx("option",{value:"Delhi",children:"Delhi"}),y.jsx("option",{value:"Mumbai",children:"Mumbai"})]})}),y.jsx(Yj,{children:"Help us connect you with opportunities in your area"}),y.jsx(Kc,{children:"Email*"}),y.jsx(vi,{name:"email",component:"input",type:"email",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"you@example.com",required:!0})}),y.jsx(Yj,{children:"We’ll email you booking information"}),y.jsxs(vue,{children:["By selecting Agree and continue, I agree to bewittch’s",y.jsx("a",{href:"#",children:"Terms & Conditions"})," and",y.jsx("a",{href:"#",children:"Nondiscrimination Policy"})," and acknowledge the",y.jsx("a",{href:"#",children:"Privacy Policy"}),"."]}),y.jsx(gue,{type:"submit",children:"Agree and Continue"})]})}),y.jsx(Mue,{children:"© bewittch 2025"})]})})]})},wue="/be-witch/assets/signing-v_bPpKov.png",_ue=V.div`
+  position: static; /* Adjust positioning for mobile layout */
+  bottom: auto;
+  left: auto;
+`,xue=()=>{const a=ji(),{updateSignupData:i}=$2(),c=s=>{i({legalName:`${s.firstName} ${s.lastName}`,dob:s.dob,location:s.location,email:s.email}),a("/onboarding")};return y.jsxs(y.Fragment,{children:[y.jsx(z2,{src:zi,alt:"BeWitch Logo",style:{marginBottom:"24px"}})," ",y.jsx(uue,{children:y.jsxs(pue,{children:[y.jsx(yue,{children:"Finish signing Up"}),y.jsx(kue,{children:"Join the world of beauty, fashion, connections."}),y.jsx(f$,{onSubmit:c,render:({handleSubmit:s})=>y.jsxs("form",{onSubmit:s,children:[y.jsx(Kc,{children:"Legal Name*"}),y.jsxs(mue,{children:[y.jsx(vi,{name:"firstName",component:"input",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"First name on ID",className:"first-name",required:!0})}),y.jsx(vi,{name:"lastName",component:"input",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"Last name on ID",required:!0})})]}),y.jsx(Kc,{children:"Date of Birth*"}),y.jsx(vi,{name:"dob",component:"input",type:"date",children:({input:h})=>y.jsx(Yc,{...h,required:!0})}),y.jsx(Kc,{children:"Location*"}),y.jsx(vi,{name:"location",component:"select",children:({input:h})=>y.jsxs(fue,{...h,required:!0,children:[y.jsx("option",{value:"",children:"Select"}),y.jsx("option",{value:"Chennai",children:"Chennai"}),y.jsx("option",{value:"Delhi",children:"Delhi"}),y.jsx("option",{value:"Mumbai",children:"Mumbai"})]})}),y.jsx(Yj,{children:"Help us connect you with opportunities in your area"}),y.jsx(Kc,{children:"Email*"}),y.jsx(vi,{name:"email",component:"input",type:"email",children:({input:h})=>y.jsx(Yc,{...h,placeholder:"you@example.com",required:!0})}),y.jsx(Yj,{children:"We’ll email you booking information"}),y.jsxs(vue,{children:["By selecting Agree and continue, I agree to bewittch’s",y.jsx("a",{href:"#",children:"Terms & Conditions"})," and",y.jsx("a",{href:"#",children:"Nondiscrimination Policy"})," and acknowledge the",y.jsx("a",{href:"#",children:"Privacy Policy"}),"."]}),y.jsx(gue,{type:"submit",children:"Agree and Continue"})]})}),y.jsx(Mue,{children:"© bewittch 2025"})]})})]})},wue="/be-witch/assets/signing-v_bPpKov.png",_ue=V.div`
   display: flex;
   align-items: center;
   justify-content: center;

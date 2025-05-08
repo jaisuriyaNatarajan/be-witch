@@ -6,12 +6,23 @@ import BeWitch from "../../assets/Bewittch.png";
 import { useNavigate } from "react-router-dom";
 import { useOnboarding } from "../../context/OnboardingContext";
 
+/* Style Reset Helpers */
+const normalizeInput = `
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 16px; 
+  color: #000;
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 16px; /* Add some padding around the form on mobile */
+  padding: 16px;
 `;
 
 const FormContainer = styled.div`
@@ -23,8 +34,7 @@ const FormContainer = styled.div`
   justify-content: center;
 
   @media (max-width: 600px) {
-    /* Styles for screens smaller than 600px (typical mobile) */
-    padding: 16px; /* Add padding inside the form container on mobile */
+    padding: 16px;
   }
 `;
 
@@ -33,12 +43,11 @@ const Heading = styled.h3`
   font-weight: 600;
   font-size: 22px;
   line-height: 30px;
-  letter-spacing: 0%;
   text-align: center;
-  margin-bottom: 12px; /* Reduce margin for better mobile spacing */
+  margin-bottom: 12px;
 
   @media (max-width: 600px) {
-    font-size: 20px; /* Slightly smaller heading on mobile */
+    font-size: 20px;
     line-height: 28px;
   }
 `;
@@ -47,13 +56,12 @@ const Subheading = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  letter-spacing: 0%;
   text-align: center;
-  margin: 0px 0px 24px 0px;
+  margin: 0 0 24px 0;
   color: ${(props) => props.theme.colors.secondary};
 
   @media (max-width: 600px) {
-    font-size: 14px; /* Slightly smaller subheading on mobile */
+    font-size: 14px;
     line-height: 22px;
     margin-bottom: 16px;
   }
@@ -63,47 +71,49 @@ const Label = styled.label`
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  letter-spacing: 0%;
-  margin-bottom: 4px; /* Add a little space below the label */
+  margin-bottom: 4px;
 `;
 
 const Input = styled.input`
-  width: calc(100% - 1rem); /* Adjust width for padding */
+  ${normalizeInput}
+  width: 100%;
   padding: 0.75rem;
-  margin-bottom: 0.75rem; /* Reduce margin for tighter spacing on mobile */
+  margin-bottom: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
 `;
 
 const Select = styled.select`
-  width: calc(100% - 1rem); /* Adjust width for padding */
+  ${normalizeInput}
+  width: 100%;
   padding: 0.75rem;
+  margin-bottom: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
-  margin-bottom: 0.75rem; /* Reduce margin for tighter spacing on mobile */
 `;
 
 const Row = styled.div`
   display: flex;
-  flex-direction: column; /* Stack elements vertically on mobile */
-  gap: 0; /* Remove gap between first and last name on mobile */
+  flex-direction: column;
+  gap: 0;
 
   & > div {
     flex: 1;
-    margin-bottom: 0.75rem; /* Add margin between the stacked inputs */
+    margin-bottom: 0.75rem;
   }
 
   .first-name {
-    margin-right: 0; /* Remove right margin for the first name on mobile */
+    margin-right: 0;
   }
 
   @media (min-width: 601px) {
-    flex-direction: row; /* Keep side-by-side on larger screens */
-    gap: 0.5rem; /* Add gap between first and last name on larger screens */
+    flex-direction: row;
+    gap: 0.5rem;
+
     & > div {
-      margin-bottom: 1rem; /* Restore larger margin on larger screens */
+      margin-bottom: 1rem;
     }
   }
 `;
@@ -111,14 +121,14 @@ const Row = styled.div`
 const HelperText = styled.p`
   font-size: 0.75rem;
   color: #777;
-  margin-top: 4px; /* Add a little space above the helper text */
-  margin-bottom: 0.75rem; /* Add some bottom margin */
+  margin-top: 4px;
+  margin-bottom: 0.75rem;
 `;
 
 const Agreement = styled.p`
   font-size: 0.75rem;
   color: #666;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 
   a {
     color: #000;
@@ -129,7 +139,7 @@ const Agreement = styled.p`
 `;
 
 const SubmitButton = styled.button`
-  width: 100%; /* Make the button full width on mobile */
+  width: 100%;
   padding: 0.9rem;
   background-color: #000;
   color: white;
@@ -138,7 +148,7 @@ const SubmitButton = styled.button`
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 1.5rem; /* Add some bottom margin to the button */
+  margin-bottom: 1.5rem;
 
   &:hover {
     background-color: #111;
@@ -148,11 +158,9 @@ const SubmitButton = styled.button`
 const Footer = styled.footer`
   font-size: 0.7rem;
   color: #aaa;
-  text-align: center; /* Center the footer text on mobile */
+  text-align: center;
   margin-top: 2rem;
-  position: static; /* Adjust positioning for mobile layout */
-  bottom: auto;
-  left: auto;
+  position: static;
 `;
 
 export const SignupForm = () => {
@@ -172,8 +180,7 @@ export const SignupForm = () => {
 
   return (
     <>
-      <Logo src={BeWitch} alt="BeWitch Logo" style={{ marginBottom: "24px" }} />{" "}
-      {/* Add some margin below the logo */}
+      <Logo src={BeWitch} alt="BeWitch Logo" style={{ marginBottom: "24px" }} />
       <Wrapper>
         <FormContainer>
           <Heading>Finish signing Up</Heading>
@@ -223,6 +230,7 @@ export const SignupForm = () => {
                     </Select>
                   )}
                 </Field>
+
                 <HelperText>
                   Help us connect you with opportunities in your area
                 </HelperText>

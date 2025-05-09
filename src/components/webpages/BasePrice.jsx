@@ -47,15 +47,38 @@ const Link = styled.a`
   margin-top: 0.75rem;
 `;
 
-const BasePrice = () => (
-  <Wrapper>
-    <Heading>Now, Set a base price</Heading>
-    <Subtext>Tip: $2,305. You'll set a weekend price</Subtext>
-    <Price>$5,000</Price>
-    <Subtext>Tip: $2,305. You’ll set a weekend price</Subtext>
-    <Button>● Show similar Services</Button>
-    <Link href="#">learn more about listing</Link>
-  </Wrapper>
-);
+const BasePrice = () => {
+  const [price, setPrice] = React.useState(5000);
+
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
+
+  return (
+    <Wrapper>
+      <Heading>Now, Set a base price</Heading>
+      <Subtext>Tip: ₹2,305. You'll set a weekend price</Subtext>
+      <Price>
+        <span>₹</span>
+        <input
+          type="input"
+          value={price}
+          onChange={handlePriceChange}
+          style={{
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            border: 'none',
+            outline: 'none',
+            width: '150px',
+          }}
+        />
+      </Price>
+      <Subtext>Tip: ₹2,305. You’ll set a weekend price</Subtext>
+      <Button>● Show similar Services</Button>
+      <Link href="#">learn more about listing</Link>
+    </Wrapper>
+  );
+};
 
 export default BasePrice;

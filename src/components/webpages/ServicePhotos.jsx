@@ -49,15 +49,15 @@ const Description = styled.p`
 `;
 
 const ImageGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
 
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        align-items: center;
-    }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+  }
 `;
 
 const Image = styled.img`
@@ -97,8 +97,14 @@ const ExploreLink = styled.a`
   }
 `;
 
-const ServicePhotos = () => {
+const ServicePhotos = ({ setImages }) => {
   const dummyImages = [servicePhotos];
+
+  const handleUpload = (event) => {
+    const files = Array.from(event.target.files);
+    const newImages = files.map((file) => URL.createObjectURL(file));
+    setImages((prevImages) => [...prevImages, ...newImages]);
+  };
 
   return (
     <Container>
@@ -110,13 +116,22 @@ const ServicePhotos = () => {
       </Description>
 
       <ImageGrid>
-        {dummyImages.map((src, index) => (
-          <Image key={index} src={src} alt={`Service ${index + 1}`} />
-        ))}
+        <Image src={dummyImages} alt={`Service sample pic`} />
       </ImageGrid>
 
       <ButtonGroup>
-        <UploadButton>+ Upload Images</UploadButton>
+        <UploadButton>
+          <label>
+            + Upload Images
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleUpload}
+            />
+          </label>
+        </UploadButton>
         <ExploreLink href="#">Explore Inspiring Portfolios</ExploreLink>
       </ButtonGroup>
     </Container>

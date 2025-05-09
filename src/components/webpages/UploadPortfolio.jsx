@@ -72,8 +72,10 @@ const Placeholder = styled.div`
   }
 `;
 
-const UploadPortfolio = () => {
-  const [uploadedImages, setUploadedImages] = useState([]);
+const UploadPortfolio = ({ images = [] }) => {
+  const [uploadedImages, setUploadedImages] = useState(
+    images.map((image) => ({ file: null, preview: image }))
+  );
 
   const handleImageUpload = (event, index) => {
     const file = event.target.files[0];

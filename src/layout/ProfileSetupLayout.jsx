@@ -51,7 +51,6 @@ const ProfileSetupLayout = ({ children, hide }) => {
       (step) =>
         location.pathname === `${!isOnboarding ? "/onboarding" : "/web"}${step}`
     ) + 1;
-  console.log(isOnboarding, "foxx");
   return (
     <Wrapper>
       <Logo src={BeWitch} />

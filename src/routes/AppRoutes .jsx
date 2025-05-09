@@ -26,6 +26,8 @@ import AdditionalCharges from "../components/webpages/AdditionalCharges"; // Fix
 
 const AppRoutes = () => {
   const [hide, setHide] = useState(true);
+  const [images, setImages] = React.useState([]);
+
   return (
     <Routes>
       <Route index element={<LoginLayout />} />
@@ -69,7 +71,7 @@ const AppRoutes = () => {
         path="/web/servicePhotos"
         element={
           <ProfileSetupLayout>
-            <ServicePhotos />
+            <ServicePhotos setImages={setImages} />
           </ProfileSetupLayout>
         }
       />
@@ -77,7 +79,7 @@ const AppRoutes = () => {
         path="/web/uploadPortfolio"
         element={
           <ProfileSetupLayout>
-            <UploadPortfolio />
+            <UploadPortfolio images={images} />
           </ProfileSetupLayout>
         }
       />

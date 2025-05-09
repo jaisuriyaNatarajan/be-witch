@@ -28,6 +28,7 @@ const StepperWrapper = styled.div`
 `;
 
 const ProfileSetupLayout = ({ children, hide }) => {
+  console.log("foxx", hide);
   const location = useLocation();
   const { formData } = useOnboarding() || {};
   const isOnboarding = formData?.onboardingCompleted || false;

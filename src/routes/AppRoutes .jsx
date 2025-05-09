@@ -63,22 +63,22 @@ const AppRoutes = () => {
         path="/web/profile-setup"
         element={
           <ProfileSetupLayout hide={hide}>
-            <ProfileSetup setHide={setHide} />
+            <ProfileSetup />
           </ProfileSetupLayout>
         }
       />
       <Route
         path="/web/servicePhotos"
         element={
-          <ProfileSetupLayout>
-            <ServicePhotos setImages={setImages} />
+          <ProfileSetupLayout hide={hide}>
+            <ServicePhotos setHide={setHide} setImages={setImages} />
           </ProfileSetupLayout>
         }
       />
       <Route
         path="/web/uploadPortfolio"
         element={
-          <ProfileSetupLayout>
+          <ProfileSetupLayout hide={hide}>
             <UploadPortfolio images={images} />
           </ProfileSetupLayout>
         }

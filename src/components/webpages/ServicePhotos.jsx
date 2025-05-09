@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import servicePhotos from "../../assets/serivesPhotos.png";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -75,6 +76,7 @@ const ButtonGroup = styled.div`
 
 const UploadButton = styled.button`
   background-color: #000;
+  height: 40px;
   color: #fff;
   padding: 10px 16px;
   border: none;
@@ -97,14 +99,24 @@ const ExploreLink = styled.a`
   }
 `;
 
-const ServicePhotos = ({ setImages }) => {
+const ServicePhotos = ({ setImages, setHide }) => {
+  const navigate = useNavigate();
   const dummyImages = [servicePhotos];
 
   const handleUpload = (event) => {
     const files = Array.from(event.target.files);
     const newImages = files.map((file) => URL.createObjectURL(file));
     setImages((prevImages) => [...prevImages, ...newImages]);
+    navigate("/web/uploadPortfolio");
+    console.log("firstImages_foxx");
   };
+
+  useEffect(() => {
+    setHide(true);
+    return () => {
+      setHide(false);
+    };
+  }, [setHide]);
 
   return (
     <Container>

@@ -88,19 +88,12 @@ const RightSection = styled.div`
   }
 `;
 
-const ProfileSetup = ({ setHide }) => {
+const ProfileSetup = () => {
   const navigate = useNavigate();
 
   const handlerClick = () => {
     navigate("/web/servicePhotos");
   };
-
-  useEffect(() => {
-    setHide(true);
-    return () => {
-      setHide(false);
-    };
-  }, [setHide]);
 
   return (
     <SetupWrapper>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
 import styled, { useTheme } from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const StepperContainer = styled.div`
   display: flex;
@@ -56,8 +57,10 @@ const Row = styled.div`
 `;
 
 const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
+  const [buttonText, setButtonText] = useState("Next");
+  const { updateFormData } = useOnboarding() || {};
+
   const progress = (currentStep / totalSteps) * 100;
-  console.log(progress, "Progress");
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -79,6 +82,34 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
       path: "/onboarding/about-you",
       next: "/dashboard",
     },
+    {
+      path: "/web/servicePhotos",
+      next: "/web/uploadPortfolio",
+    },
+    {
+      path: "/web/uploadPortfolio",
+      next: "/web/serviceTitle",
+    },
+    {
+      path: "/web/serviceTitle",
+      next: "/web/highlightsSelector",
+    },
+    {
+      path: "/web/highlightsSelector",
+      next: "/web/basePrice",
+    },
+    {
+      path: "/web/basePrice",
+      next: "/web/discounts",
+    },
+    {
+      path: "/web/discounts",
+      next: "/web/additonalCharges",
+    },
+    {
+      path: "/web/additonalCharges",
+      next: "/",
+    },
   ];
 
   const currentPath = location.pathname === "/onboarding/about-you";
@@ -88,6 +119,9 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
 
   const handleNext = () => {
     if (currentStepIndex !== -1 && steps[currentStepIndex].next) {
+      if (currentPath) {
+        updateFormData({ onboardingCompleted: true });
+      }
       navigate(steps[currentStepIndex].next);
     }
   };
@@ -95,6 +129,14 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
   const handleBack = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    if (location.pathname === "/onboarding/about-you") {
+      setButtonText("Finish");
+    } else if (location.pathname === "/web/additonalCharges") {
+      setButtonText("create Service");
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -116,9 +158,7 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
         >
           Back
         </SubmitButton>
-        <SubmitButton onClick={handleNext}>
-          {currentPath ? "Create profile" : "Next"}
-        </SubmitButton>
+        <SubmitButton onClick={handleNext}>{buttonText}</SubmitButton>
       </Row>
     </>
   );

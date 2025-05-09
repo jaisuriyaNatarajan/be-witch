@@ -7,12 +7,15 @@ export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    height: auto;
+    overflow-y: auto;
     font-family: 'Inter', sans-serif;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.text};
-    /* overflow: hidden;  */
-
   }
+
+
+
 
 
 

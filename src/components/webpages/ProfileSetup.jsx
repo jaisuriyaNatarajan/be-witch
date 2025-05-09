@@ -1,6 +1,7 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import styled from "styled-components";
 import MacbookPro from "../../assets/MacbookPro.png";
+import { useNavigate } from "react-router-dom";
 
 // Container layout
 const SetupWrapper = styled.div`
@@ -87,7 +88,20 @@ const RightSection = styled.div`
   }
 `;
 
-const ProfileSetup = () => {
+const ProfileSetup = ({ setHide }) => {
+  const navigate = useNavigate();
+
+  const handlerClick = () => {
+    navigate("/web/servicePhotos");
+  };
+
+  useEffect(() => {
+    setHide(true);
+    return () => {
+      setHide(false);
+    };
+  }, [setHide]);
+
   return (
     <SetupWrapper>
       <LeftSection>
@@ -115,7 +129,9 @@ const ProfileSetup = () => {
           </ul>
         </Box>
 
-        <StartButton>Start Creating your Website</StartButton>
+        <StartButton onClick={handlerClick}>
+          Start Creating your Website
+        </StartButton>
         <Note>
           This may take around 10–15 mins to complete. Please be patient – a
           well-built profile gets more visibility and trust.

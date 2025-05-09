@@ -43,7 +43,7 @@ const StyledTextarea = styled.textarea`
 `;
 
 const AboutYou = () => {
-  const { updateFormData,formData } = useOnboarding();
+  const { updateFormData, formData } = useOnboarding();
   const [bio, setBio] = useState(
     `“I'm a certified makeup artist with 5+ years of experience in bridal, editorial, and glam makeovers. Passionate about enhancing natural beauty and collaborating with creatives.”`
   );

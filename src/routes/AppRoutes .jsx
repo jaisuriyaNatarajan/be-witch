@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Home from "../pages/Home";
 import Bookings from "../pages/Bookings";
 import Discover from "../pages/Discover";
@@ -16,8 +16,16 @@ import ProfileSetupLayout from "../layout/ProfileSetupLayout";
 import SocialProof from "../components/onboarding/SocialProof";
 import AboutYou from "../components/onboarding/AboutYou";
 import ProfileSetup from "../components/webpages/ProfileSetup";
+import ServicePhotos from "../components/webpages/ServicePhotos";
+import UploadPortfolio from "../components/webpages/UploadPortfolio";
+import ServiceTitleForm from "../components/webpages/serviceTitleform";
+import HighlightsSelector from "../components/webpages/HighlightsSelector";
+import BasePrice from "../components/webpages/BasePrice";
+import Discounts from "../components/webpages/discounts";
+import AdditionalCharges from "../components/webpages/AdditionalCharges";
 
 const AppRoutes = () => {
+  const [hide, setHide] = useState(true);
   return (
     <Routes>
       <Route index element={<LoginLayout />} />
@@ -52,8 +60,64 @@ const AppRoutes = () => {
       <Route
         path="/web/profile-setup"
         element={
+          <ProfileSetupLayout hide={hide}>
+            <ProfileSetup setHide={setHide} />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/servicePhotos"
+        element={
           <ProfileSetupLayout>
-            <ProfileSetup />
+            <ServicePhotos />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/uploadPortfolio"
+        element={
+          <ProfileSetupLayout>
+            <UploadPortfolio />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/serviceTitle"
+        element={
+          <ProfileSetupLayout>
+            <ServiceTitleForm />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/highlightsSelector"
+        element={
+          <ProfileSetupLayout>
+            <HighlightsSelector />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/basePrice"
+        element={
+          <ProfileSetupLayout>
+            <BasePrice />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/discounts"
+        element={
+          <ProfileSetupLayout>
+            <Discounts />
+          </ProfileSetupLayout>
+        }
+      />
+      <Route
+        path="/web/additonalCharges"
+        element={
+          <ProfileSetupLayout>
+            <AdditionalCharges />
           </ProfileSetupLayout>
         }
       />

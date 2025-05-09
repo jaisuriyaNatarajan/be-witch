@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../assets/icons/GoogleIcon.png";
 import Paragraph from "../Paragraph/Paragraph";
 import { media } from "../../utils/media";
+import { useOnboarding } from "../../context/OnboardingContext";
 
 const Footer = styled.footer`
   font-size: 0.8rem;
@@ -121,6 +122,8 @@ const StyledLink = styled(Link)`
 const Loginpage = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { formData } = useOnboarding() || {};
+  const isOnboarding = formData?.onboardingCompleted || false;
 
   const onSubmit = () => {
     navigate("/signup/otp-verification");
@@ -225,7 +228,7 @@ const Loginpage = () => {
                     <SubmitButton type="submit">Sign in</SubmitButton>
                     <GoogleSignInButton />
                   </Row>
-                  <SignUpLink />
+                  {!isOnboarding && <SignUpLink />}
                 </form>
               )}
             />

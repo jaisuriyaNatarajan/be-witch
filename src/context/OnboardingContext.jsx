@@ -18,6 +18,7 @@ export const OnboardingProvider = ({ children }) => {
     profilePicture: "",
     socialProof: "",
     about: "",
+    onboardingCompleted: false,
   });
 
   const updateSignupData = (newData) => {

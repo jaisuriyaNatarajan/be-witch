@@ -84,16 +84,36 @@ Please change the parent <Route path="${E}"> to <Route path="${E==="/"?"*":`${E}
   padding: 24px 32px;
   width: 100%;
   max-height: 120px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    max-height: none;
+  }
 `,iR=L.div`
   max-width: 60%;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
 `,cR=L.h2`
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `,dR=L.p`
   font-size: 14px;
   color: #555;
   margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `,lR=L.button`
   background-color: #000;
   color: #fff;
@@ -102,9 +122,19 @@ Please change the parent <Route path="${E}"> to <Route path="${E==="/"?"*":`${E}
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 `,sR=L.img`
   width: 180px;
   height: auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+  }
 `,hR=()=>{const a=Zr();return u.jsxs(rR,{children:[u.jsxs(iR,{children:[u.jsx(cR,{children:"Build Your Dream Studio Starts Here !"}),u.jsx(dR,{children:"Create your studio website. Get discovered. Get booked."}),u.jsx(lR,{onClick:()=>a("/web/profile-setup"),children:"Get started"})]}),u.jsx(sR,{src:aR,alt:"Banner",style:{width:"398px",height:"231px"}})]})},Ib="/be-witch/assets/sampleProfile-9jWjuUxv.png",uR="/be-witch/assets/jude-CxUTMqYA.png",Z2="/be-witch/assets/makeup-artist-DPfzVEa7.png",W2="/be-witch/assets/makeup-artist1-CG8ZNYWy.png",G2="/be-witch/assets/makeup-artist2-DQ69VZgs.png",Q2="/be-witch/assets/makeup-artist3-Dun8zUFJ.png",pR=L.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -8868,7 +8898,7 @@ ${o$.tablet`
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-`,ipe=({currentStep:a=1,totalSteps:i=4})=>{const[c,s]=b.useState("Next"),{updateFormData:h}=O1()||{},p=a/i*100,f=ji(),v=Ut(),M=Zr(),k=[{path:"/onboarding",next:"/onboarding/upload-photo"},{path:"/onboarding/upload-photo",next:"/onboarding/social-proof"},{path:"/onboarding/social-proof",next:"/onboarding/about-you"},{path:"/onboarding/about-you",next:"/dashboard"},{path:"/web/servicePhotos",next:"/web/uploadPortfolio"},{path:"/web/uploadPortfolio",next:"/web/serviceTitle"},{path:"/web/serviceTitle",next:"/web/highlightsSelector"},{path:"/web/highlightsSelector",next:"/web/basePrice"},{path:"/web/basePrice",next:"/web/discounts"},{path:"/web/discounts",next:"/web/additonalCharges"},{path:"/web/additonalCharges",next:"/"}],I=v.pathname==="/onboarding/about-you",j=k.findIndex(H=>H.path===v.pathname),A=()=>{j!==-1&&k[j].next&&(I&&h({onboardingCompleted:!0}),M(k[j].next))},P=()=>{M(-1)};return b.useEffect(()=>{v.pathname==="/onboarding/about-you"?s("Finish"):v.pathname==="/web/additonalCharges"&&s("create Service")},[v.pathname]),u.jsxs(u.Fragment,{children:[u.jsxs(epe,{children:[u.jsx(tpe,{children:u.jsx(npe,{progress:p>0?p:25})}),u.jsx(ope,{children:Array.from({length:i}).map((H,F)=>u.jsx(ape,{},F))})]}),u.jsxs(rpe,{children:[u.jsx(az,{onClick:P,bg:f.colors.white,color:f.colors.black,children:"Back"}),u.jsx(az,{onClick:A,children:c})]})]})},cpe=L.div`
+`,ipe=({currentStep:a=1,totalSteps:i=4})=>{const[c,s]=b.useState("Next"),{updateFormData:h}=O1()||{},p=a/i*100,f=ji(),v=Ut(),M=Zr(),k=[{path:"/onboarding",next:"/onboarding/upload-photo"},{path:"/onboarding/upload-photo",next:"/onboarding/social-proof"},{path:"/onboarding/social-proof",next:"/onboarding/about-you"},{path:"/onboarding/about-you",next:"/dashboard"},{path:"/web/servicePhotos",next:"/web/uploadPortfolio"},{path:"/web/uploadPortfolio",next:"/web/serviceTitle"},{path:"/web/serviceTitle",next:"/web/highlightsSelector"},{path:"/web/highlightsSelector",next:"/web/basePrice"},{path:"/web/basePrice",next:"/web/discounts"},{path:"/web/discounts",next:"/web/additonalCharges"},{path:"/web/additonalCharges",next:"/"}],I=v.pathname==="/onboarding/about-you",j=k.findIndex(H=>H.path===v.pathname),A=()=>{j!==-1&&k[j].next&&(I&&h({onboardingCompleted:!0}),M(k[j].next))},P=()=>{M(-1)};return b.useEffect(()=>(v.pathname==="/onboarding/about-you"?s("Finish"):v.pathname==="/web/additonalCharges"&&s("create Service"),()=>{s("Next")}),[v.pathname]),u.jsxs(u.Fragment,{children:[u.jsxs(epe,{children:[u.jsx(tpe,{children:u.jsx(npe,{progress:p>0?p:25})}),u.jsx(ope,{children:Array.from({length:i}).map((H,F)=>u.jsx(ape,{},F))})]}),u.jsxs(rpe,{children:[u.jsx(az,{onClick:P,bg:f.colors.white,color:f.colors.black,children:"Back"}),u.jsx(az,{onClick:A,children:c})]})]})},cpe=L.div`
   display: flex;
   flex-direction: column;
   min-height: 95vh;
@@ -9389,4 +9419,4 @@ ${o$.tablet`
   font-size: 0.75rem;
   color: #888;
   margin-top: 1rem;
-`,Qye=()=>{const[a,i]=b.useState({travel:!0,timing:!0,hours:!0,trial:!1}),c=s=>{i(h=>({...h,[s]:!h[s]}))};return u.jsxs(Tye,{children:[u.jsx(Oye,{children:"Additional Charges"}),u.jsx(Uye,{children:"Help your service stand out to get booked faster and earn your first reviews"}),[{key:"travel",title:"Travel Fee",desc:"Applies if the event is beyond your base city or location"},{key:"timing",title:"Early/Late Timing Fee",desc:"Applies : arrival before ( 6:00 AM ) or Event ends after ( 9:00 PM )"},{key:"hours",title:"Extra Hours",desc:"Charge for session extensions beyond your standard duration"},{key:"trial",title:"Trial / Pre-shoot Fee",desc:"For test makeup, trial hairstyles, or concept shoots before the actual event."}].map(s=>u.jsxs(Zye,{children:[u.jsxs(Wye,{children:[u.jsx("strong",{children:s.title}),u.jsx("br",{}),u.jsx("small",{children:s.desc})]}),u.jsx("input",{type:"checkbox",checked:a[s.key],onChange:()=>c(s.key)})]},s.key)),u.jsx(Gye,{children:"“Additional charges may apply for travel beyond city limits, early morning bookings, or if an assistant is required. Exact charges will be confirmed before final booking.”"})]})},Xye=()=>{const[a,i]=b.useState(!0);return u.jsxs(_V,{children:[u.jsx(je,{index:!0,element:u.jsx(J2,{})}),u.jsx(je,{path:"/login",element:u.jsx(J2,{})}),u.jsx(je,{path:"/register",element:u.jsx(J2,{})}),u.jsx(je,{path:"/signup/otp-verification",element:u.jsx(J2,{})}),u.jsx(je,{path:"/onboarding",element:u.jsx(Spe,{})}),u.jsx(je,{path:"/onboarding/upload-photo",element:u.jsx(qt,{children:u.jsx(qpe,{})})}),u.jsx(je,{path:"/onboarding/social-proof",element:u.jsx(qt,{children:u.jsx(Fpe,{})})}),u.jsx(je,{path:"/onboarding/about-you",element:u.jsx(qt,{children:u.jsx(Upe,{})})}),u.jsx(je,{path:"/web/profile-setup",element:u.jsx(qt,{hide:a,children:u.jsx(eye,{setHide:i})})}),u.jsx(je,{path:"/web/servicePhotos",element:u.jsx(qt,{children:u.jsx(hye,{})})}),u.jsx(je,{path:"/web/uploadPortfolio",element:u.jsx(qt,{children:u.jsx(vye,{})})}),u.jsx(je,{path:"/web/serviceTitle",element:u.jsx(qt,{children:u.jsx(Iye,{})})}),u.jsx(je,{path:"/web/highlightsSelector",element:u.jsx(qt,{children:u.jsx($ye,{})})}),u.jsx(je,{path:"/web/basePrice",element:u.jsx(qt,{children:u.jsx(Fye,{})})}),u.jsx(je,{path:"/web/discounts",element:u.jsx(qt,{children:u.jsx(Dye,{})})}),u.jsx(je,{path:"/web/additionalCharges",element:u.jsx(qt,{children:u.jsx(Qye,{})})}),u.jsxs(je,{element:u.jsx(jhe,{}),children:[u.jsx(je,{path:"/dashboard",element:u.jsx(MR,{})}),u.jsx(je,{path:"/bookings",element:u.jsx(xR,{})})," ",u.jsx(je,{path:"/discover",element:u.jsx(wR,{})}),u.jsx(je,{path:"/services",element:u.jsx(_R,{})}),u.jsxs(je,{path:"/profile",element:u.jsx(she,{}),children:[u.jsx(je,{path:"overview",element:u.jsx(zhe,{})}),u.jsx(je,{path:"about",element:u.jsx(Phe,{})})," "]})]})]})};function Kye(){return u.jsx(bP,{theme:nR,children:u.jsxs(fue,{children:[u.jsx(oR,{}),u.jsx(WV,{basename:"/be-witch",children:u.jsx(Xye,{})})]})})}const Yye=NH.createRoot(document.getElementById("root"));Yye.render(u.jsx(Kye,{}));
+`,Qye=()=>{const[a,i]=b.useState({travel:!0,timing:!0,hours:!0,trial:!1}),c=s=>{i(h=>({...h,[s]:!h[s]}))};return u.jsxs(Tye,{children:[u.jsx(Oye,{children:"Additional Charges"}),u.jsx(Uye,{children:"Help your service stand out to get booked faster and earn your first reviews"}),[{key:"travel",title:"Travel Fee",desc:"Applies if the event is beyond your base city or location"},{key:"timing",title:"Early/Late Timing Fee",desc:"Applies : arrival before ( 6:00 AM ) or Event ends after ( 9:00 PM )"},{key:"hours",title:"Extra Hours",desc:"Charge for session extensions beyond your standard duration"},{key:"trial",title:"Trial / Pre-shoot Fee",desc:"For test makeup, trial hairstyles, or concept shoots before the actual event."}].map(s=>u.jsxs(Zye,{children:[u.jsxs(Wye,{children:[u.jsx("strong",{children:s.title}),u.jsx("br",{}),u.jsx("small",{children:s.desc})]}),u.jsx("input",{type:"checkbox",checked:a[s.key],onChange:()=>c(s.key)})]},s.key)),u.jsx(Gye,{children:"“Additional charges may apply for travel beyond city limits, early morning bookings, or if an assistant is required. Exact charges will be confirmed before final booking.”"})]})},Xye=()=>{const[a,i]=b.useState(!0);return u.jsxs(_V,{children:[u.jsx(je,{index:!0,element:u.jsx(J2,{})}),u.jsx(je,{path:"/login",element:u.jsx(J2,{})}),u.jsx(je,{path:"/register",element:u.jsx(J2,{})}),u.jsx(je,{path:"/signup/otp-verification",element:u.jsx(J2,{})}),u.jsx(je,{path:"/onboarding",element:u.jsx(Spe,{})}),u.jsx(je,{path:"/onboarding/upload-photo",element:u.jsx(qt,{children:u.jsx(qpe,{})})}),u.jsx(je,{path:"/onboarding/social-proof",element:u.jsx(qt,{children:u.jsx(Fpe,{})})}),u.jsx(je,{path:"/onboarding/about-you",element:u.jsx(qt,{children:u.jsx(Upe,{})})}),u.jsx(je,{path:"/web/profile-setup",element:u.jsx(qt,{hide:a,children:u.jsx(eye,{setHide:i})})}),u.jsx(je,{path:"/web/servicePhotos",element:u.jsx(qt,{children:u.jsx(hye,{})})}),u.jsx(je,{path:"/web/uploadPortfolio",element:u.jsx(qt,{children:u.jsx(vye,{})})}),u.jsx(je,{path:"/web/serviceTitle",element:u.jsx(qt,{children:u.jsx(Iye,{})})}),u.jsx(je,{path:"/web/highlightsSelector",element:u.jsx(qt,{children:u.jsx($ye,{})})}),u.jsx(je,{path:"/web/basePrice",element:u.jsx(qt,{children:u.jsx(Fye,{})})}),u.jsx(je,{path:"/web/discounts",element:u.jsx(qt,{children:u.jsx(Dye,{})})}),u.jsx(je,{path:"/web/additonalCharges",element:u.jsx(qt,{children:u.jsx(Qye,{})})}),u.jsxs(je,{element:u.jsx(jhe,{}),children:[u.jsx(je,{path:"/dashboard",element:u.jsx(MR,{})}),u.jsx(je,{path:"/bookings",element:u.jsx(xR,{})})," ",u.jsx(je,{path:"/discover",element:u.jsx(wR,{})}),u.jsx(je,{path:"/services",element:u.jsx(_R,{})}),u.jsxs(je,{path:"/profile",element:u.jsx(she,{}),children:[u.jsx(je,{path:"overview",element:u.jsx(zhe,{})}),u.jsx(je,{path:"about",element:u.jsx(Phe,{})})," "]})]})]})};function Kye(){return u.jsx(bP,{theme:nR,children:u.jsxs(fue,{children:[u.jsx(oR,{}),u.jsx(WV,{basename:"/be-witch",children:u.jsx(Xye,{})})]})})}const Yye=NH.createRoot(document.getElementById("root"));Yye.render(u.jsx(Kye,{}));

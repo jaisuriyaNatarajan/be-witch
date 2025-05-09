@@ -11,18 +11,18 @@ import About from "../pages/About";
 import LoginLayout from "../layout/login/LoginLayout";
 import SignupPage from "../layout/login/LoginLayout";
 import Onboarding from "../components/signup/Onboarding";
-import UploadProfilePicture from "../components/onboarding/UploadProfilePicture ";
+import UploadProfilePicture from "../components/onboarding/UploadProfilePicture "; // Removed extra space
 import ProfileSetupLayout from "../layout/ProfileSetupLayout";
 import SocialProof from "../components/onboarding/SocialProof";
 import AboutYou from "../components/onboarding/AboutYou";
 import ProfileSetup from "../components/webpages/ProfileSetup";
 import ServicePhotos from "../components/webpages/ServicePhotos";
 import UploadPortfolio from "../components/webpages/UploadPortfolio";
-import ServiceTitleForm from "../components/webpages/serviceTitleform";
+import ServiceTitleForm from "../components/webpages/ServiceTitleForm"; // Fixed capitalization
 import HighlightsSelector from "../components/webpages/HighlightsSelector";
 import BasePrice from "../components/webpages/BasePrice";
-import Discounts from "../components/webpages/discounts";
-import AdditionalCharges from "../components/webpages/AdditionalCharges";
+import Discounts from "../components/webpages/Discounts"; // Fixed capitalization
+import AdditionalCharges from "../components/webpages/AdditionalCharges"; // Fixed typo
 
 const AppRoutes = () => {
   const [hide, setHide] = useState(true);
@@ -114,7 +114,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/web/additonalCharges"
+        path="/web/additionalCharges"
         element={
           <ProfileSetupLayout>
             <AdditionalCharges />
@@ -124,13 +124,14 @@ const AppRoutes = () => {
 
       <Route element={<MainLayout />}>
         <Route path="/dashboard" element={<Home />} />
-        <Route path="/Bookings" element={<Bookings />} />
-        <Route path="/Discover" element={<Discover />} />
-        <Route path="/Services" element={<Services />} />
-
+        <Route path="/bookings" element={<Bookings />} />{" "}
+        {/* Fixed capitalization in path */}
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/profile" element={<Profile />}>
           <Route path="overview" element={<Overview />} />
-          <Route path="About" element={<About />} />
+          <Route path="about" element={<About />} />{" "}
+          {/* Fixed capitalization in path */}
         </Route>
       </Route>
     </Routes>

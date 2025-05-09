@@ -136,6 +136,9 @@ const StepperComponent = ({ currentStep = 1, totalSteps = 4 }) => {
     } else if (location.pathname === "/web/additonalCharges") {
       setButtonText("create Service");
     }
+    return () => {
+      setButtonText("Next");
+    };
   }, [location.pathname]);
 
   return (

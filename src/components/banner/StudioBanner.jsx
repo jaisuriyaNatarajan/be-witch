@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import styled, { useTheme } from "styled-components";
 import bannerImage from "../../assets/banner-laptop.png";
 import { useNavigate } from "react-router-dom";
@@ -12,22 +12,42 @@ const Banner = styled.div`
   padding: 24px 32px;
   width: 100%;
   max-height: 120px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    max-height: none;
+  }
 `;
 
 const Text = styled.div`
   max-width: 60%;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
 `;
 
 const Heading = styled.h2`
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const SubText = styled.p`
   font-size: 14px;
   color: #555;
   margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Button = styled.button`
@@ -38,11 +58,21 @@ const Button = styled.button`
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 `;
 
 const Image = styled.img`
   width: 180px;
   height: auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+  }
 `;
 
 const StudioBanner = () => {

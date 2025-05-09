@@ -114,7 +114,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/web/additionalCharges"
+        path="/web/additonalCharges"
         element={
           <ProfileSetupLayout>
             <AdditionalCharges />

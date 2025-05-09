@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { media } from "../../utils/media";
 
 const NavContainer = styled.div`
   display: flex;
@@ -67,6 +68,14 @@ const Logo = styled.img`
   width: 153px;
   height: 52px;
   object-fit: contain;
+  position: sticky;
+  top: 12px;
+  left: 32px;
+  z-index: 1000;
+
+${media.tablet`
+  position: static;
+`}
 `;
 
 export {

@@ -8,10 +8,13 @@ const LayoutContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  width: 1140px;
+  width: 100%;
+  max-width: 1140px;
   margin: 0 auto;
-  @media (max-width: 768px) {
+  padding: 1rem;
+  @media (max-width: 810px) {
     flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -19,10 +22,13 @@ const LeftColumn = styled.div`
   flex: 1;
   background: #fff;
   padding: 2rem;
-  overflow-y: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 810px) {
+    width: 100%;
+    padding: 1rem;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -31,7 +37,7 @@ const RightColumn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     display: none;
   }
 `;
@@ -50,10 +56,10 @@ const StyledImage = styled.img`
 
 const OverlayContent = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 95%;
+  width: 90%;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border-radius: 16px;

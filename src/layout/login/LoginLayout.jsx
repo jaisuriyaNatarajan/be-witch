@@ -11,9 +11,10 @@ const SignupPage = () => {
     const componentMap = {
       "/signup/otp-verification": <OtpVerification />,
       "/login": <Loginpage/>,
+      "/register": <SignupForm/>,
     };
 
-    return componentMap[location.pathname] || <SignupForm />;
+    return componentMap[location.pathname] || <Loginpage />;
   };
 
   return (

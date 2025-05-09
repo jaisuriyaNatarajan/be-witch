@@ -21,10 +21,12 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  border: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+  /* border: ${({ theme }) => `1px solid ${theme.colors.secondary}`}; */
   height: 480px;
   border-radius: 12px;
   padding: 24px;
+  justify-content: center;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 `;
 
 const Wrapper = styled.div`
@@ -33,6 +35,7 @@ const Wrapper = styled.div`
   flex-direction: ${({ column }) => (column ? "column" : "row")};
   gap: 12px;
   align-items: ${({ alignCenter }) => (alignCenter ? "center" : "")};
+  justify-content: ${({ center }) => (center ? "center" : "")};
 `;
 
 const About = () => {
@@ -98,19 +101,20 @@ const About = () => {
         <Wrapper>
           <h3>₹12,000</h3>
         </Wrapper>
-        <Wrapper alignCenter>
+        <Wrapper alignCenter center>
           <h4>Premium Package: Bridal Perfection</h4>
-          <Button width="100px" height="28px">
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "4px",
-                justifyContent: "center",
-              }}
-            >
-              Premium
-            </span>
+          <Button
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "4px",
+              justifyContent: "center",
+              width: "100px",
+              height: "28px",
+              margin: "10px",
+            }}
+          >
+            <span>Premium</span>
           </Button>
         </Wrapper>
         <Wrapper column>

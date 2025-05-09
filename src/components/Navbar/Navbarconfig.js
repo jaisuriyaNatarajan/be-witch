@@ -1,5 +1,5 @@
 const navItems = [
-  { path: "/", element: "Home", end: true },
+  { path: "/dashboard", element: "Home", end: true },
   { path: "/Discover", element: "Discover" },
   { path: "/Bookings", element: "Bookings" },
   { path: "/Services", element: "Services" },
@@ -7,8 +7,8 @@ const navItems = [
 ];
 
 const iconItems = [
-  { name: "Bell", size: 24 },
-  { name: "MessageSquare", size: 24 },
+  { name: "Bell", size: 24, noborder: true },
+  { name: "MessageSquare", size: 24, noborder: true },
 ];
 
 const homeNavItems = [

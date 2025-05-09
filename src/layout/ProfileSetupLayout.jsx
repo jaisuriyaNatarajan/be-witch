@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import StepperComponent from "../components/StepperBar/StepperComponent";
+import { useLocation } from "react-router-dom";
+import { Logo } from "../components/Navbar/Navbar.styles";
+import BeWitch from "../assets/Bewittch.png";
+import { useOnboarding } from "../context/OnboardingContext";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 95vh;
   padding: 20px 40px;
   box-sizing: border-box;
   justify-content: space-between;
-`;
-
-const Logo = styled.div`
-  font-weight: bold;
-  font-size: 24px;
-  padding-bottom: 10px;
 `;
 
 const Content = styled.div`
@@ -29,14 +27,44 @@ const StepperWrapper = styled.div`
   padding-top: 10px;
 `;
 
-const ProfileSetupLayout = ({ children }) => {
+const ProfileSetupLayout = ({ children, hide }) => {
+  console.log("foxx", hide);
+  const location = useLocation();
+  const { formData } = useOnboarding() || {};
+  const isOnboarding = formData?.onboardingCompleted || false;
+
+  const steps = formData?.onboardingCompleted
+    ? [
+        "/servicePhotos",
+        "/uploadPortfolio",
+        "/serviceTitle",
+        "/highlightsSelector",
+        "/basePrice",
+        "/discounts",
+        "/additonalCharges",
+      ]
+    : ["/", "/upload-photo", "/social-proof", "/about-you"];
+
+  console.log(steps, "steps");
+
+  const completePercentage =
+    steps.findIndex(
+      (step) =>
+        location.pathname === `${!isOnboarding ? "/onboarding" : "/web"}${step}`
+    ) + 1;
   return (
     <Wrapper>
-      <Logo>Bewittch</Logo>
+      <Logo src={BeWitch} />
       <Content>{children}</Content>
-      <StepperWrapper>
-        <StepperComponent />
-      </StepperWrapper>
+      {!hide && (
+        <StepperWrapper>
+          <StepperComponent
+            currentStep={completePercentage}
+            totalSteps={!isOnboarding ? 4 : 7}
+            isOnboarding={isOnboarding}
+          />
+        </StepperWrapper>
+      )}
     </Wrapper>
   );
 };

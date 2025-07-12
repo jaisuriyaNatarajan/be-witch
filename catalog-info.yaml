@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bewittch
+  description: This is the Bewittch service repository.
+  tags:
+    - react
+    - nodejs
+    - frontend
+  annotations:
+    github.com/project-slug: my-company/bewittch-service
+spec:
+  type: service
+  owner: your-team-name
+  lifecycle: production

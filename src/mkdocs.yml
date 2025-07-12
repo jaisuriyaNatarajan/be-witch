@@ -1,0 +1,5 @@
+site_name: Bewittch Docs
+nav:
+  - Home: index.md
+  - Deployment Guide: how-to-deploy.md
+  - API Reference: api-reference.md

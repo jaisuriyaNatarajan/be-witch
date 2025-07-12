@@ -11,5 +11,5 @@ metadata:
     github.com/project-slug: my-company/bewittch-service
 spec:
   type: service
-  owner: your-team-name
+  owner: suryaFox@Bewittch
   lifecycle: production
